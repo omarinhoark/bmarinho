@@ -1,0 +1,1369 @@
+<title>Caderneta da Escolinha</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Archivo+Narrow:wght@500;600;700&display=swap">
+<style>
+:root{
+  --board:#1C2621;
+  --board-2:#26332C;
+  --chalk:#F4F2E9;
+  --paper:#E8E9E1;
+  --paper-2:#F1F2EC;
+  --ink:#22271F;
+  --ink-2:#4A5148;
+  --rule:#C7CABF;
+  --ochre:#8F6417;
+  --ochre-bright:#B8832B;
+  --brick:#8C3527;
+  --shadow:rgba(28,38,33,.10);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --board:#111713;
+    --board-2:#1B241E;
+    --chalk:#F0EEE4;
+    --paper:#161C18;
+    --paper-2:#1E2620;
+    --ink:#E4E5DB;
+    --ink-2:#A2A899;
+    --rule:#333D35;
+    --ochre:#DDAE52;
+    --ochre-bright:#E8C071;
+    --brick:#D4796A;
+    --shadow:rgba(0,0,0,.4);
+  }
+}
+:root[data-theme="dark"]{
+  --board:#111713;
+  --board-2:#1B241E;
+  --chalk:#F0EEE4;
+  --paper:#161C18;
+  --paper-2:#1E2620;
+  --ink:#E4E5DB;
+  --ink-2:#A2A899;
+  --rule:#333D35;
+  --ochre:#DDAE52;
+  --ochre-bright:#E8C071;
+  --brick:#D4796A;
+  --shadow:rgba(0,0,0,.4);
+}
+
+*{box-sizing:border-box}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"Source Serif 4",Georgia,"Times New Roman",serif;
+  font-size:17px;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+.col{max-width:68ch}
+
+/* ---------- quadro-negro ---------- */
+.board{
+  background:var(--board);
+  color:var(--chalk);
+  padding:64px 0 56px;
+  border-bottom:6px solid var(--ochre);
+}
+.board .wrap{display:flex;flex-direction:column;gap:26px}
+.eyebrow{
+  font-family:"Archivo Narrow",Arial Narrow,sans-serif;
+  text-transform:uppercase;
+  letter-spacing:.18em;
+  font-size:12px;
+  font-weight:600;
+  color:var(--ochre-bright);
+}
+h1{
+  font-family:"Zilla Slab",Rockwell,Georgia,serif;
+  font-weight:700;
+  font-size:clamp(38px,6.4vw,68px);
+  line-height:1.03;
+  margin:0;
+  text-wrap:balance;
+  letter-spacing:-.015em;
+}
+h1 small{display:block;font-size:.42em;font-weight:500;color:var(--chalk);opacity:.72;margin-top:14px;letter-spacing:0}
+.lede{font-size:19px;max-width:62ch;margin:0;color:var(--chalk);opacity:.9}
+.board a{color:var(--ochre-bright)}
+
+.stats{display:flex;flex-wrap:wrap;gap:0;margin-top:6px;border-top:1px solid rgba(244,242,233,.18)}
+.stat{padding:18px 30px 4px 0;margin-right:30px;border-right:1px solid rgba(244,242,233,.14)}
+.stat:last-child{border-right:0}
+.stat b{
+  display:block;font-family:"Zilla Slab",serif;font-size:30px;font-weight:600;
+  line-height:1;color:var(--ochre-bright);font-variant-numeric:tabular-nums;
+}
+.stat span{font-family:"Archivo Narrow",sans-serif;text-transform:uppercase;letter-spacing:.1em;font-size:11px;opacity:.7;display:block;margin-top:7px}
+
+/* ---------- sumário ---------- */
+nav.toc{background:var(--paper-2);border-bottom:1px solid var(--rule);padding:20px 0}
+nav.toc ol{
+  list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px 26px;
+  font-family:"Archivo Narrow",sans-serif;text-transform:uppercase;letter-spacing:.09em;font-size:12.5px;font-weight:600;
+}
+nav.toc a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid transparent;padding-bottom:2px}
+nav.toc a:hover,nav.toc a:focus-visible{color:var(--ochre);border-bottom-color:var(--ochre)}
+
+/* ---------- seções ---------- */
+section{padding:56px 0 8px;scroll-margin-top:12px}
+h2{
+  font-family:"Zilla Slab",serif;font-weight:600;
+  font-size:clamp(26px,3.4vw,36px);line-height:1.12;margin:0 0 8px;text-wrap:balance;
+}
+h3{
+  font-family:"Zilla Slab",serif;font-weight:600;font-size:22px;line-height:1.2;
+  margin:38px 0 6px;text-wrap:balance;
+}
+.kicker{
+  font-family:"Archivo Narrow",sans-serif;text-transform:uppercase;letter-spacing:.16em;
+  font-size:11.5px;font-weight:700;color:var(--ochre);margin:0 0 12px;
+}
+p{margin:0 0 16px}
+a{color:var(--ochre)}
+strong{font-weight:600}
+.dim{color:var(--ink-2)}
+hr.rule{border:0;border-top:1px solid var(--rule);margin:44px 0}
+
+/* ---------- linha do tempo ---------- */
+.timeline{list-style:none;margin:26px 0 0;padding:0;border-left:2px solid var(--rule)}
+.timeline li{padding:0 0 26px 26px;position:relative}
+.timeline li::before{
+  content:"";position:absolute;left:-7px;top:9px;width:12px;height:12px;border-radius:50%;
+  background:var(--paper);border:2px solid var(--ochre);
+}
+.timeline .yr{
+  font-family:"Archivo Narrow",sans-serif;font-weight:700;letter-spacing:.08em;
+  font-size:13px;text-transform:uppercase;color:var(--ochre);display:block;margin-bottom:2px;
+  font-variant-numeric:tabular-nums;
+}
+.timeline b{font-family:"Zilla Slab",serif;font-weight:600;font-size:18px;display:block;margin-bottom:2px}
+.timeline p{margin:0;font-size:16px;color:var(--ink-2)}
+
+/* ---------- caixa lateral ---------- */
+.aside{
+  background:var(--paper-2);border:1px solid var(--rule);border-left:4px solid var(--ochre);
+  padding:22px 24px;margin:30px 0;
+}
+.aside h4{font-family:"Zilla Slab",serif;font-size:18px;margin:0 0 8px;font-weight:600}
+.aside p:last-child{margin-bottom:0}
+.aside p{font-size:16px}
+
+/* ---------- ferramenta de busca ---------- */
+.finder{
+  position:sticky;top:0;z-index:20;background:var(--paper);
+  border-bottom:1px solid var(--rule);padding:14px 0;margin-bottom:8px;
+}
+.finder .wrap{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.finder label{
+  font-family:"Archivo Narrow",sans-serif;text-transform:uppercase;letter-spacing:.12em;
+  font-size:11.5px;font-weight:700;color:var(--ochre);
+}
+.finder input{
+  flex:1 1 260px;min-width:0;background:var(--paper-2);border:1px solid var(--rule);
+  color:var(--ink);font-family:"Source Serif 4",serif;font-size:16px;padding:9px 13px;border-radius:2px;
+}
+.finder input:focus-visible{outline:2px solid var(--ochre);outline-offset:1px}
+.finder .count{font-family:"Archivo Narrow",sans-serif;font-size:13px;color:var(--ink-2);letter-spacing:.04em}
+
+/* ---------- faixa de turma ---------- */
+.turma{
+  background:var(--board);color:var(--chalk);padding:15px 22px;margin:44px 0 0;
+  display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;
+}
+.turma h3{margin:0;color:var(--chalk);font-size:21px}
+.turma span{
+  font-family:"Archivo Narrow",sans-serif;text-transform:uppercase;letter-spacing:.12em;
+  font-size:11.5px;color:var(--ochre-bright);font-weight:600;
+}
+
+/* ---------- fichas ---------- */
+.roll{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:0;border-top:1px solid var(--rule)}
+.card{
+  border-bottom:1px solid var(--rule);border-right:1px solid var(--rule);
+  padding:22px 24px 20px;display:flex;flex-direction:column;gap:9px;
+}
+.card:hover{background:var(--paper-2)}
+.card h4{
+  font-family:"Zilla Slab",serif;font-size:20px;font-weight:600;margin:0;line-height:1.18;
+}
+.who{
+  font-family:"Archivo Narrow",sans-serif;font-size:13.5px;letter-spacing:.03em;
+  color:var(--ochre);font-weight:600;text-transform:uppercase;margin:-4px 0 0;
+}
+.who .yrs{color:var(--ink-2);font-weight:500;letter-spacing:.05em}
+.card p{margin:0;font-size:16px;line-height:1.55}
+.card .bio{color:var(--ink-2);font-size:15.5px}
+.bordao{
+  font-style:italic;border-left:3px solid var(--ochre);padding:2px 0 2px 12px;
+  font-size:16px;color:var(--ink);
+}
+.card.hidden{display:none}
+
+/* ---------- tabela ---------- */
+.tablewrap{overflow-x:auto;margin:24px 0;border:1px solid var(--rule)}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:16px}
+th,td{text-align:left;padding:11px 16px;border-bottom:1px solid var(--rule)}
+thead th{
+  background:var(--board);color:var(--chalk);font-family:"Archivo Narrow",sans-serif;
+  text-transform:uppercase;letter-spacing:.1em;font-size:11.5px;font-weight:600;
+}
+tbody tr:last-child td{border-bottom:0}
+tbody tr:nth-child(even){background:var(--paper-2)}
+td.char{font-family:"Zilla Slab",serif;font-weight:600}
+
+/* ---------- memoriam ---------- */
+.memoriam{columns:2;column-gap:44px;margin:22px 0 0;padding:0;list-style:none}
+.memoriam li{break-inside:avoid;padding:8px 0;border-bottom:1px solid var(--rule);font-size:16px}
+.memoriam b{font-weight:600}
+.memoriam span{display:block;color:var(--ink-2);font-size:15px}
+@media (max-width:720px){.memoriam{columns:1}}
+
+footer{background:var(--board);color:var(--chalk);margin-top:64px;padding:44px 0 52px}
+footer h2{color:var(--chalk)}
+footer p{color:var(--chalk);opacity:.82;font-size:16px}
+footer a{color:var(--ochre-bright)}
+footer .col{max-width:74ch}
+
+@media (max-width:640px){
+  body{font-size:16.5px}
+  .board{padding:44px 0 40px}
+  .stat{padding-right:22px;margin-right:22px}
+  .roll{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+:focus-visible{outline:2px solid var(--ochre);outline-offset:2px}
+</style>
+
+<header class="board">
+  <div class="wrap">
+    <p class="eyebrow">Rádio Mayrink Veiga, 1952 &nbsp;—&nbsp; Canal Viva, 2021</p>
+    <h1>Caderneta da Escolinha
+      <small>Todos os alunos do Professor Raimundo, e as pessoas de verdade que os interpretaram</small>
+    </h1>
+    <p class="lede">A Escolinha do Professor Raimundo é a piada mais longeva da televisão brasileira: nasceu no rádio, atravessou quatro emissoras, dois séculos e dois professores. Esta é a chamada completa — o personagem de um lado, o ator do outro.</p>
+    <div class="stats">
+      <div class="stat"><b>69</b><span>anos de sala de aula</span></div>
+      <div class="stat"><b>100+</b><span>alunos catalogados</span></div>
+      <div class="stat"><b>2</b><span>professores Raimundo</span></div>
+      <div class="stat"><b>~200</b><span>personagens criados por Chico</span></div>
+    </div>
+  </div>
+</header>
+
+<nav class="toc">
+  <div class="wrap">
+    <ol>
+      <li><a href="#historia">A história</a></li>
+      <li><a href="#formato">Como funcionava</a></li>
+      <li><a href="#professor">O professor</a></li>
+      <li><a href="#classica">Turma clássica</a></li>
+      <li><a href="#turma2001">Turma de 2001</a></li>
+      <li><a href="#nova">Nova Geração</a></li>
+      <li><a href="#comparativo">Antiga × Nova</a></li>
+      <li><a href="#memoriam">In memoriam</a></li>
+      <li><a href="#fontes">Fontes</a></li>
+    </ol>
+  </div>
+</nav>
+
+<main>
+
+<section id="historia">
+  <div class="wrap col">
+    <p class="kicker">Parte um</p>
+    <h2>Sete décadas de chamada</h2>
+    <p>O Professor Raimundo não foi inventado para a televisão. Ele nasceu em 1952, no rádio, criado pelo radialista e humorista <strong>Haroldo Barbosa</strong> para a Rádio Mayrink Veiga — e entregue a um locutor esportivo e redator de vinte e poucos anos chamado Francisco Anysio de Oliveira Paula. Chico ficou com o personagem pelos 60 anos seguintes.</p>
+    <p>De todos os cerca de duzentos tipos que criou ao longo da carreira, o professor era o preferido dele. E era o mais simples: um mestre-escola brasileiro de escola pública, mal pago, que amava dar aula e não conseguia terminar uma pergunta sem ser sabotado pela própria turma.</p>
+
+    <ul class="timeline">
+      <li>
+        <span class="yr">1952</span>
+        <b>Rádio Mayrink Veiga</b>
+        <p>Haroldo Barbosa cria a Escolinha para o rádio. Chico Anysio é o professor. Nesse mesmo ano nasce o Seu Peru — o aluno que sobreviveria a tudo.</p>
+      </li>
+      <li>
+        <span class="yr">1957</span>
+        <b>TV Rio — quadro do <i>Noites Cariocas</i></b>
+        <p>Cinco anos depois da estreia no rádio, a Escolinha vira quadro de televisão.</p>
+      </li>
+      <li>
+        <span class="yr">1973</span>
+        <b>Rede Globo — <i>Chico City</i></b>
+        <p>Chico leva o quadro para a Globo, onde ele viveria dentro dos seus programas de humor por quase duas décadas: <i>Chico City</i> (1973–1980), depois <i>Chico Anysio Show</i> (a partir de 1982) e <i>Chico Total</i>.</p>
+      </li>
+      <li>
+        <span class="yr">4 de agosto de 1990</span>
+        <b>Programa próprio</b>
+        <p>A Escolinha deixa de ser quadro e ganha meia hora só dela, na faixa do fim da tarde da Globo. Estreia com cerca de 20 alunos em sala.</p>
+      </li>
+      <li>
+        <span class="yr">28 de maio de 1995</span>
+        <b>Fim da primeira fase</b>
+        <p>Depois de cinco anos e de sucessivas renovações de elenco — as "turmas" de 1990, 1992, 1993, 1994 e 1995 —, o programa é encerrado por desgaste de fórmula e queda de audiência.</p>
+      </li>
+      <li>
+        <span class="yr">1999–2001</span>
+        <b>Escolinha do Barulho (Record)</b>
+        <p>Sem os direitos sobre o Professor Raimundo, a Record monta uma escolinha própria e recruta vários veteranos — entre eles Mário Tupinambá, que leva o Bertoldo Brecha junto.</p>
+      </li>
+      <li>
+        <span class="yr">26 de março – 28 de dezembro de 2001</span>
+        <b>A última turma de Chico</b>
+        <p>A Globo retoma a Escolinha como programa solo, de segunda a sexta, com uma leva grande de caras novas. É a última vez que Chico Anysio dá aula.</p>
+      </li>
+      <li>
+        <span class="yr">2015–2021</span>
+        <b>Nova Geração — Canal Viva</b>
+        <p>Para os 25 anos do programa solo, o Viva remonta a Escolinha com <strong>Bruno Mazzeo</strong>, filho de Chico, no lugar do pai. Seis temporadas, reprisadas todo janeiro na Globo. A última vai ao ar entre outubro de 2020 e janeiro de 2021.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section id="formato">
+  <div class="wrap col">
+    <p class="kicker">Parte dois</p>
+    <h2>Como a aula funcionava</h2>
+    <p>A estrutura nunca mudou. O professor entrava, fazia a chamada, propunha uma pergunta e ia arguindo aluno por aluno. Cada aluno tinha um tipo, um sotaque, um bordão e uma piada por rodada. A resposta errada era o ponto — e a régua na mesa, o "vapt-vupt", tentava (sempre em vão) restabelecer a ordem.</p>
+    <p>O que dava vida à coisa era um método de produção bastante incomum: <strong>cada ator recebia apenas o próprio texto</strong>. Ninguém sabia a fala do colega. As reações de espanto, os risos engasgados e as gargalhadas em cena eram, em boa parte, genuínas — e Chico improvisava por cima. É por isso que os episódios parecem menos um roteiro executado do que uma sala de aula realmente saindo do controle.</p>
+    <div class="aside">
+      <h4>O salário</h4>
+      <p>O professor era pobre, e o programa nunca deixou o público esquecer. "E o salário, ó…", dito com a mão espalmada e um muxoxo, virou o comentário social recorrente de um humorístico infantojuvenil exibido às cinco e meia da tarde — uma piada sobre o magistério brasileiro repetida cinco vezes por semana durante anos.</p>
+    </div>
+  </div>
+</section>
+
+<section id="professor">
+  <div class="wrap col">
+    <p class="kicker">Parte três</p>
+    <h2>O professor</h2>
+    <h3>Raimundo Nonato Canavieira</h3>
+    <p><strong>O personagem.</strong> Professor de curso de adultos, nordestino, idoso, de terno surrado e óculos na ponta do nariz. Ama o ofício e detesta o contracheque. Trata os alunos com uma mistura de afeto paternal e desespero contido: chama-os de "meu filho", perde a paciência, bate na mesa, xinga baixinho ("cara de areia mijada", reservado ao Aldemar Vigário) e recomeça. Bordões: <em>"E o salário, ó…"</em>, <em>"É vapt-vupt!"</em>, <em>"Muuuuito bem!"</em>, <em>"Queria ter um filho assim!"</em>, <em>"Olha eu pagando mico pro macaco…"</em>.</p>
+    <p><strong>Chico Anysio (1931–2012).</strong> Francisco Anysio de Oliveira Paula nasceu em Maranguape, no interior do Ceará, em 12 de abril de 1931, e mudou-se com a família para o Rio aos 8 anos. Começou na Rádio Guanabara acumulando funções — locutor, ator, comentarista esportivo, redator. Entrou para a Globo em 1969 e ficou mais de quarenta anos. Criou perto de duzentos personagens, entre eles Alberto Roberto, Bento Carneiro, Nazareno, Painho, Salomé e o Professor Raimundo, que dizia ser o seu favorito. Além do humor, foi compositor, escritor e pintor. Morreu no Rio em 23 de março de 2012, aos 80 anos, de falência múltipla de órgãos após uma infecção pulmonar.</p>
+    <p><strong>Bruno Mazzeo (n. 1977).</strong> Filho de Chico Anysio com a atriz Alcione Mazzeo, nasceu no Rio em 3 de maio de 1977. Antes de assumir a sala de aula do pai já era um dos melhores roteiristas de comédia do país — escreveu para <i>Sai de Baixo</i>, <i>A Diarista</i> e para a própria Escolinha —, além de ter criado e protagonizado <i>Cilada</i>, que virou o filme <i>Cilada.com</i> (2011), e <i>Diário de um Confinado</i> (2020). Em 2015 aceitou o papel mais exposto possível: interpretar o personagem que o pai fez por seis décadas. Compôs um Raimundo mais jovem e mais contido, e sustentou seis temporadas.</p>
+  </div>
+</section>
+
+<section id="classica">
+  <div class="wrap col">
+    <p class="kicker">Parte quatro</p>
+    <h2>A turma clássica &nbsp;<span class="dim" style="font-weight:400">1990–1995</span></h2>
+    <p>O programa estreou com cerca de vinte alunos e foi renovando o elenco a cada ano — as chamadas "turmas". Abaixo, cada aluno com a sua ficha: quem era o personagem, o bordão que o identificava e a biografia real de quem o interpretou.</p>
+  </div>
+</section>
+
+<div class="finder">
+  <div class="wrap">
+    <label for="q">Procurar na caderneta</label>
+    <input id="q" type="search" placeholder="nome do aluno, do ator ou um bordão…" autocomplete="off">
+    <span class="count" id="count"></span>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <div class="turma"><h3>Turma de 1990</h3><span>a fundadora — estreia em 4 de agosto</span></div>
+  <div class="roll">
+
+    <article class="card">
+      <h4>Seu Peru</h4>
+      <p class="who">Orlando Drummond <span class="yrs">(1919–2021)</span></p>
+      <p>O aluno mais velho e mais antigo de todos: criado em 1952, no rádio, e ainda em sala no século XXI. Velhinho, meio surdo, meio safado, respondia tudo com uma malandragem senil que desarmava o professor. Virou sinônimo do programa.</p>
+      <p class="bio"><strong>O ator:</strong> Orlando Drummond Cardoso, carioca nascido em 18 de outubro de 1919. Começou em 1942 como contrarregra e, incentivado por Paulo Gracindo, virou dublador — profissão que exerceu do início dos anos 1950 até 2019. É a voz brasileira do Scooby-Doo (o que lhe rendeu registro no Guinness por dublar o personagem mais de 35 anos), do Popeye, do Alf, do Vingador de <i>Caverna do Dragão</i> e de dezenas de outros. Morreu em 27 de julho de 2021, aos 101 anos. Em 2019, aos 99, ainda gravou uma ponta na Nova Geração, contracenando com o Seu Peru mais novo.</p>
+    </article>
+
+    <article class="card">
+      <h4>Rolando Lero</h4>
+      <p class="who">Rogério Cardoso <span class="yrs">(1937–2003)</span></p>
+      <p>O aluno que nunca sabia a resposta e transformava isso em arte: enrolava o professor com um palavrório empolado e reverente até a pergunta morrer de exaustão. O nome é a piada — "rolando lero".</p>
+      <p class="bordao">"Captei a vossa mensagem, amado mestre!"</p>
+      <p class="bio"><strong>O ator:</strong> Rogério Cardoso Furtado nasceu em Mococa (SP) em 7 de março de 1937. Entrou no rádio aos 15 anos como contrarregra e estreou na TV em 1963, na Excelsior. Cinco décadas de carreira como ator, comediante, músico, compositor — e vereador. Fez Salgadinho em <i>Explode Coração</i> (1995) e o Seu Flor de <i>A Grande Família</i> entre 2001 e 2003. Morreu de infarto fulminante em casa, em Copacabana, em 24 de julho de 2003, aos 66 anos.</p>
+    </article>
+
+    <article class="card">
+      <h4>Aldemar Vigário</h4>
+      <p class="who">Lúcio Mauro <span class="yrs">(1927–2019)</span></p>
+      <p>O bajulador-mor. Inventava histórias mirabolantes sobre o passado do professor para agradá-lo — sempre a mesma ladainha sobre um menininho cabeçudo que teria sido o Raimundo criança. Era o aluno que o professor mais xingava e mais gostava.</p>
+      <p class="bordao">"O menininho… cabeçudinho… joelhinho grosso… perninha fina… Quem? Quem? Ele!"</p>
+      <p class="bio"><strong>O ator:</strong> Lúcio de Barros Barbalho, nascido em Belém em 14 de março de 1927. Pioneiro da TV brasileira, passou por TV Rio, Tupi, Excelsior e Globo. Fez o Fernandinho e o Zé das Mulheres no <i>Balança Mas Não Cai</i> e no <i>Zorra Total</i>, e o diretor Da Julia no <i>Chico Anysio Show</i>. Foi casado com Arlete Salles (1958–1970) e é pai do ator Lúcio Mauro Filho — que herdaria o Aldemar em 2015. Morreu no Rio em 11 de maio de 2019, aos 92 anos.</p>
+    </article>
+
+    <article class="card">
+      <h4>Dona Cacilda</h4>
+      <p class="who">Cláudia Jimenez <span class="yrs">(1958–2022)</span></p>
+      <p>A aluna apaixonada pelo professor, de voz esganiçada e assédio declarado. Perseguia o mestre pela sala inteira, ganhava sempre um fora e voltava no episódio seguinte com o mesmo entusiasmo.</p>
+      <p class="bordao">"Cacilllllda!" &nbsp;·&nbsp; "Beijinho, beijinho, pau, pau!"</p>
+      <p class="bio"><strong>A atriz:</strong> Cláudia Maria Patitucci Jimenez, nascida em 18 de novembro de 1958. Estreou em 1979 em <i>Malu Mulher</i> e se firmou nos anos 1980 em <i>Os Trapalhões</i>, <i>Viva o Gordo</i> e <i>Chico Anysio Show</i>. Depois da Escolinha, virou a empregada Edileuza de <i>Sai de Baixo</i>, um dos papéis mais populares da TV brasileira nos anos 1990. No cinema, ganhou o prêmio de melhor atriz no Festival de Brasília por <i>O Corpo</i>. Morreu em 20 de agosto de 2022, aos 63 anos, de insuficiência cardíaca aguda.</p>
+    </article>
+
+    <article class="card">
+      <h4>Dona Bela</h4>
+      <p class="who">Zezé Macedo <span class="yrs">(1916–1999)</span></p>
+      <p>A aluna que se achava um espetáculo de beleza — o nome era a ironia. Uma piada visual construída sobre a própria persona pública da atriz, que fez carreira inteira rindo do próprio rosto.</p>
+      <p class="bio"><strong>A atriz:</strong> Maria José de Macedo, nascida em Silva Jardim (RJ) em 6 de maio de 1916. Subiu ao palco aos 4 anos, largou aos 15 para casar e voltou depois do fim do casamento. É considerada a primeira-dama da chanchada: atuou em 108 longas-metragens, marca que nenhuma outra atriz brasileira alcançou. Rádio Tamoio, companhia de revista de Walter Pinto, <i>Circo Bombril</i>, comédias da Atlântida — e, no fim da vida, a Escolinha. Morreu no Rio em 8 de outubro de 1999, de hemorragia cerebral.</p>
+    </article>
+
+    <article class="card">
+      <h4>Seu Eustáquio</h4>
+      <p class="who">Grande Otelo <span class="yrs">(1915–1993)</span></p>
+      <p>Aluno pequeno, ágil e atravessado, que respondia à arguição com uma pergunta de volta. O programa teve, por três anos, um dos maiores atores do século XX brasileiro sentado numa carteira escolar.</p>
+      <p class="bordao">"Aqui, qui queres?" &nbsp;·&nbsp; "Faiô?"</p>
+      <p class="bio"><strong>O ator:</strong> Sebastião Bernardes de Souza Prata, nascido em Uberlândia (MG) em 18 de outubro de 1915. Órfão de pai, foi levado a São Paulo por uma companhia mambembe aos 7 anos e adotado pela família Gonçalves. Fez comédia, drama e crítica social no teatro e no cinema; formou com Oscarito a dupla mais importante da chanchada e foi dirigido por Orson Welles e Glauber Rocha. Esteve na Escolinha entre 1990 e 1993. Morreu em Paris, em 26 de novembro de 1993, a caminho de um festival.</p>
+    </article>
+
+    <article class="card">
+      <h4>Joselino Barbacena</h4>
+      <p class="who">Antônio Carlos Pires <span class="yrs">(1927–2005)</span></p>
+      <p>O mineiro tímido e assustadiço que começava toda resposta com uma lembrança de infância em Barbacena e terminava implorando para ser deixado em paz.</p>
+      <p class="bordao">"Quando eu era criança pequena lá em Barbacena…" &nbsp;·&nbsp; "Larga d'eu, sô!"</p>
+      <p class="bio"><strong>O ator:</strong> Antônio Carlos Pires, carioca nascido em 1º de janeiro de 1927, foi um dos pioneiros do humor no rádio brasileiro — atuava na Mayrink Veiga já nos anos 1940. Seis décadas de carreira, com parcerias longas com Chico Anysio e Jô Soares. Estreou no cinema em 1953. Era pai da atriz Glória Pires. Ficou na Escolinha de 1990 a 1994. Morreu em 28 de fevereiro de 2005, aos 78 anos, de infecção generalizada.</p>
+    </article>
+
+    <article class="card">
+      <h4>Seu Bicalho</h4>
+      <p class="who">Antônio Pedro <span class="yrs">(1940–2023)</span></p>
+      <p>Criado em 1989 no <i>Chico Anysio Show</i> e transferido para a Escolinha, era o aluno dos ruídos: respondia fazendo barulhos com a boca e emendava merchandising de produtos inexistentes no meio da aula.</p>
+      <p class="bio"><strong>O ator:</strong> Antônio Pedro Borges de Oliveira, carioca nascido em 11 de novembro de 1940. Estudou em Paris, estreou na TV em 1969 (<i>Super Plá</i>, na Tupi) e foi para a Globo em 1972. Fez <i>Gabriela</i>, <i>Sassaricando</i>, <i>Explode Coração</i>, <i>A Diarista</i>. No teatro, foi uma das figuras centrais da explosão do besteirol, com <i>Cabra Marcado para Correr</i> (1985). Na Escolinha, além do Bicalho, fez Celso Piquete (1992), João Abre-Alas (1994), Nelson Piquete e, em 2001, José Bonvê. Morreu em 12 de março de 2023, aos 82 anos.</p>
+    </article>
+
+    <article class="card">
+      <h4>Seu Boneco</h4>
+      <p class="who">Lug de Paula <span class="yrs">(n. 1957)</span></p>
+      <p>Malandro de Duque de Caxias, mais interessado na merenda do que em qualquer conteúdo. Fez tanto sucesso que ganhou programa próprio na TV Manchete: <i>Clube do Seu Boneco</i> e <i>Seu Boneco nas Paradas</i>, ambos de 1995.</p>
+      <p class="bio"><strong>O ator:</strong> Luis Guilherme de Souza de Paula, carioca nascido em 15 de junho de 1957. É o mais velho dos oito filhos de Chico Anysio — filho da atriz Nancy Wanderley — e meio-irmão de Nizo Neto e Bruno Mazzeo. Foi casado nove anos com Heloísa Périssé, com quem tem uma filha. Abandonou a carreira artística depois que a Escolinha se encerrou como quadro do <i>Zorra Total</i>, em 2001; em 2020 vivia em Florianópolis, dedicado a negócios próprios.</p>
+    </article>
+
+    <article class="card">
+      <h4>Seu Ptolomeu</h4>
+      <p class="who">Nizo Neto <span class="yrs">(n. 1964)</span></p>
+      <p>O sabichão da turma. Corrigia os colegas, exibia erudição de almanaque e irritava todo mundo — inclusive o professor, que raramente conseguia refutá-lo.</p>
+      <p class="bio"><strong>O ator:</strong> Francisco Anysio de Paula Neto, carioca nascido em 27 de abril de 1964, filho de Chico Anysio com a atriz Rose Rondelli. Começou na TV em 1972, ainda menino, ao lado do pai em <i>Linguinha</i>, <i>Chico em Quadrinhos</i>, <i>Chico City</i> e <i>Chico Anysio Show</i>. Ator, comediante, ilusionista, redator, diretor e dublador desde 1983. Foi redator da Nova Geração no Canal Viva — escrevendo para o irmão fazer o papel do pai.</p>
+    </article>
+
+    <article class="card">
+      <h4>Samuel Blaustein</h4>
+      <p class="who">Marcos Plonka <span class="yrs">(1939–2011)</span></p>
+      <p>O comerciante judeu que transformava qualquer pergunta da aula em oportunidade de negócio, e vivia em atrito comercial com o turco Salim Muchiba — dupla de rivalidade que rendeu alguns dos melhores diálogos do programa.</p>
+      <p class="bordao">"Fassemos qualquer negócio!"</p>
+      <p class="bio"><strong>O ator:</strong> Marcos Plonka nasceu em 26 de setembro de 1939 no Tatuapé, em São Paulo, numa família judia — os pais eram poloneses que chegaram ao Brasil pouco antes da Segunda Guerra. Começou no teatro amador no fim dos anos 1950 e entrou na TV Tupi nos anos 1960. Chegou à Globo em 1980 (<i>Olhai os Lírios do Campo</i>) e emendou <i>Balança, Mas Não Cai</i>, <i>Os Trapalhões</i>, <i>Chico City</i> e a Escolinha. Morreu de infarto em 8 de setembro de 2011.</p>
+    </article>
+
+    <article class="card">
+      <h4>Bertoldo Brecha</h4>
+      <p class="who">Mário Tupinambá <span class="yrs">(1932–2010)</span></p>
+      <p>Paródia do dramaturgo Bertolt Brecht: um intelectual arruinado, de fala arrastada e frases desconexas, que citava o teatro épico entre uma bobagem e outra.</p>
+      <p class="bordao">"Zé fini, tá na boca do Brasi" &nbsp;·&nbsp; "Camarão é a mãe" &nbsp;·&nbsp; "Veeeeenha!"</p>
+      <p class="bio"><strong>O ator:</strong> Juvemário de Oliveira Tupinambá, nascido em Nazaré das Farinhas (BA) em 26 de abril de 1932. Além de ator, era redator de programas humorísticos e trabalhou em várias produções de Chico Anysio. Fez o Bertoldo na Escolinha de 1990 a 1995, repetiu o personagem na <i>Escolinha do Barulho</i> da Record (1999–2001) e ainda o levou ao <i>Zorra Total</i> em 2007–2008. Morreu em 27 de setembro de 2010, aos 78 anos, de choque cardiogênico.</p>
+    </article>
+
+    <article class="card">
+      <h4>Dona Escolástica</h4>
+      <p class="who">Lupe Gigliotti <span class="yrs">(1926–2010)</span></p>
+      <p>A autoridade da escola — inspetora/diretora severa que aparecia para lembrar ao professor que ele também tinha chefe. O nome vem da escolástica medieval, e o rigor combinava.</p>
+      <p class="bio"><strong>A atriz:</strong> Maria Lupicínia Viana de Paula, nascida em Maranguape (CE) em julho de 1926 — irmã de Chico Anysio. Formada em Direito, começou a atuar nos anos 1960 e acumulou 17 papéis no teatro, 19 em novelas e séries e 11 filmes. Fez também <i>Zorra Total</i> e <i>A Diarista</i>; sua última aparição foi em <i>Cama de Gato</i> (2010). É mãe da diretora Cininha de Paula, que dirigiu a Nova Geração e nela reviveu a própria mãe fazendo Dona Escolástica. Morreu em 19 de dezembro de 2010, aos 84 anos, de câncer de pulmão.</p>
+    </article>
+
+    <article class="card">
+      <h4>Inspetor Atanagildo</h4>
+      <p class="who">Milton Carneiro <span class="yrs">(1923–1999)</span></p>
+      <p>O inspetor de alunos, figura de autoridade tão desmoralizada quanto o professor.</p>
+      <p class="bio"><strong>O ator:</strong> Milton da Costa Carneiro, carioca nascido em 25 de setembro de 1923. Começou no circo, estreou no teatro em 1939 e rodou o país em companhias mambembes. Entrou na Globo em 1965, na novela <i>Rosinha do Sobrado</i>, e a partir de <i>Chico City</i> (1972) participou de praticamente todos os humorísticos da casa: <i>Satiricom</i>, <i>O Planeta dos Homens</i>, <i>Os Trapalhões</i>, <i>Viva o Gordo</i>. Morreu de ataque cardíaco em 8 de dezembro de 1999.</p>
+    </article>
+
+    <article class="card">
+      <h4>Baltazar da Rocha</h4>
+      <p class="who">Walter D'Ávila <span class="yrs">(1911–1996)</span></p>
+      <p>O aluno que confundia tudo: misturava nomes, datas, conceitos e provérbios num embrulho só. Ingênuo, alheio e absolutamente convicto de cada bobagem que dizia.</p>
+      <p class="bio"><strong>O ator:</strong> Walter D'Ávila nasceu em Porto Alegre em 29 de novembro de 1911. Começou nos anos 1920 num grupo cênico criado pelo flautista Piratini para a Rádio Gaúcha, onde já atuava sua irmã Ema D'Ávila, também comediante. Foi para a TV em 1957, na TV Rio, e ficou nacionalmente conhecido como "O Sinfrônio" da <i>Praça da Alegria</i>, de Manoel de Nóbrega, na Record. Morreu de insuficiência cardíaca em 19 de abril de 1996. Em 2001, Chico Anysio dedicava a ele o encerramento das sextas-feiras.</p>
+    </article>
+
+    <article class="card">
+      <h4>Sandoval Quaresma</h4>
+      <p class="who">Brandão Filho <span class="yrs">(1910–1998)</span></p>
+      <p>O aluno mais querido do professor e o mais trágico: acertava perguntas dificílimas e escorregava sempre na última — no exato instante em que o dez estava garantido.</p>
+      <p class="bordao">"Opa! Tá na ponta da língua!" &nbsp;·&nbsp; "Agora que eu me estrepo!" &nbsp;·&nbsp; "Tava indo tão bem!" &nbsp;·&nbsp; "Eu estudo!"</p>
+      <p class="bio"><strong>O ator:</strong> Moacyr Augusto Soares Brandão, nascido em Espírito Santo do Pinhal (SP) em 6 de janeiro de 1910, filho do ator João Augusto Soares Brandão, o "Brandão, o Popularíssimo". Órfão aos 11 anos, trabalhou como entregador de tinturaria e estreou como artista de circo aos 19. A Escolinha foi um dos seus últimos trabalhos. Morreu em 22 de março de 1998, aos 88 anos, de câncer.</p>
+    </article>
+
+    <article class="card">
+      <h4>Seu Mazarito</h4>
+      <p class="who">Costinha <span class="yrs">(1923–1995)</span></p>
+      <p>Homenagem cifrada a dois monstros da comédia brasileira: o nome funde Mazzaropi e Oscarito. Foi o último personagem da carreira de Costinha.</p>
+      <p class="bio"><strong>O ator:</strong> Lírio Mário da Costa, carioca nascido em 24 de março de 1923. Foi entregador, garçom, engraxate e cambista do jogo do bicho antes de entrar no rádio — e essa vivência do Rio popular dos anos 1940 alimentou todos os seus personagens. Em 1942, na Rádio Tamoio, participou da <strong>primeira versão radiofônica da Escolinha</strong>. Voltou a ela quase cinquenta anos depois, de 1990 a 1995. Morreu em 15 de setembro de 1995, aos 72 anos.</p>
+    </article>
+
+    <article class="card">
+      <h4>João Bacorinho</h4>
+      <p class="who">Olney Cazarré <span class="yrs">(1945–1991)</span></p>
+      <p>Paulista, corintiano fanático — o uniforme escolar dele era a camisa da Gaviões da Fiel. Foi o último trabalho do ator.</p>
+      <p class="bio"><strong>O ator:</strong> Olnei Berard Cazarré, carioca nascido em 14 de maio de 1945, filho dos atores Darcy Cazarré e Déa Selva e irmão de Older Cazarré. Fez seu primeiro filme aos 3 anos. Entrou na AIC como projecionista nos anos 1960 e virou dublador: é a voz brasileira clássica do Pica-Pau, a partir de 1967. Morreu em 19 de janeiro de 1991, aos 45 anos, de complicações cardíacas decorrentes de tromboangiite obliterante — poucos meses depois da estreia do programa.</p>
+    </article>
+
+    <article class="card">
+      <h4>Suppapau Uaçu</h4>
+      <p class="who">Jaime Filho <span class="yrs">(1930–2017)</span></p>
+      <p>O indígena da turma, de sotaque carregado e respostas curtas e desconcertantes. Esteve em sala de agosto de 1990 a março de 1992.</p>
+      <p class="bio"><strong>O ator:</strong> Jaime Rodrigues Costa Filho, carioca nascido em 16 de outubro de 1930, filho do ator Jaime Costa. Como o pai, começou no teatro, mas se firmou no humor; foi também radialista, roteirista e produtor. Na Escolinha fez ainda o caipira José dos Campos e o Seu Antero de Camões. Afastou-se da TV em 1998. Morreu em 3 de janeiro de 2017, aos 86 anos.</p>
+    </article>
+
+    <article class="card">
+      <h4>Dona Cândida</h4>
+      <p class="who">Stella Freitas <span class="yrs">(n. 1954)</span></p>
+      <p>A aluna ingênua ao ponto do absurdo — o nome descrevia o método.</p>
+      <p class="bio"><strong>A atriz:</strong> Maristela Andrade Freitas nasceu em São Paulo em 18 de maio de 1954. Foi a Cuca do <i>Sítio do Picapau Amarelo</i> em 1977 (e voltou ao Sítio em 1984 e 2006) e ficou conhecida do grande público como a empregada Dinalda de <i>Sassaricando</i> (1987). Ganhou melhor atriz coadjuvante no Festival de Gramado de 1990 por <i>Stelinha</i>. Atriz e diretora teatral, segue em atividade — com mais de cinquenta anos de carreira.</p>
+    </article>
+
+    <article class="card">
+      <h4>Dona Marina da Glória</h4>
+      <p class="who">Tássia Camargo <span class="yrs">(n. 1961)</span></p>
+      <p>A aluna distraída, que despertava do próprio mundo sempre que ouvia o nome na chamada.</p>
+      <p class="bordao">"Chamô, chamô?"</p>
+      <p class="bio"><strong>A atriz:</strong> Maria Aparecida Pereira Anastasio, nascida em Guarulhos (SP) em 29 de janeiro de 1961. Começou no teatro aos 17 sob direção de Antunes Filho, em 1978, e foi a primeira apresentadora do <i>Vídeo Show</i>, em 1983. Fez Marlene em <i>O Salvador da Pátria</i> e Elisa em <i>Tieta</i>. Perdeu a filha Maria Júlia, de 2 anos, em 1996.</p>
+    </article>
+
+    <article class="card">
+      <h4>Seu Geraldo</h4>
+      <p class="who">Castrinho <span class="yrs">(n. 1940)</span></p>
+      <p>Um dos alunos da formação original, e um dos parceiros mais constantes de Chico Anysio na televisão.</p>
+      <p class="bio"><strong>O ator:</strong> Geraldo Freire de Castro Filho, carioca nascido em 17 de outubro de 1940. Descobriu a vocação em peças do Colégio Militar, onde a mãe o matriculou. Estreou na TV em <i>Balança Mas Não Cai</i> (1968) e emendou <i>Chico City</i>, <i>Chico Anysio Show</i>, <i>Chico Total</i> e a Escolinha. Ficou marcado também pelo personagem Cascatinha. No cinema, fez <i>A Ostra e o Vento</i> (1996), <i>Orfeu</i> (1999), <i>O Xangô de Baker Street</i> (2001) e <i>Deus é Brasileiro</i> (2003). Mais de seis décadas de carreira.</p>
+    </article>
+
+    <article class="card">
+      <h4>Zé Bonitinho</h4>
+      <p class="who">Jorge Loredo <span class="yrs">(1925–2015)</span></p>
+      <p>O galã convencido de si: topete monumental, óculos escuros, bigodinho, camisa aberta e um vocabulário de cantada que nunca funcionava. Criado em 1961, muito antes da Escolinha, e levado para a sala de aula em 1990.</p>
+      <p class="bio"><strong>O ator:</strong> Jorge Rodrigues Loredo nasceu em Campo Grande, no Rio, em 7 de maio de 1925. Aos 12 anos teve osteomielite na perna esquerda e conviveu com dor constante até os anos 1970; aos 20, internado com tuberculose num sanatório, entrou para o grupo de teatro do hospital e descobriu a vocação. Procurou uma escola de teatro querendo papéis sérios e foi aprovado num monólogo cômico — e virou humorista contra a própria vontade. Antes do Zé Bonitinho, criou o Mendigo filósofo da <i>Praça da Alegria</i>. Foi também advogado, especialista em Direito Previdenciário e do Trabalho. Morreu em 26 de março de 2015, aos 89 anos.</p>
+    </article>
+
+    <article class="card">
+      <h4>Nerso da Capitinga</h4>
+      <p class="who">Pedro Bismarck <span class="yrs">(n. 1961)</span></p>
+      <p>O caipira de Capitinga, de chapéu de palha e lógica rural inatacável. Criado nos palcos de Juiz de Fora nos anos 1980, chegou à Escolinha em 1990 e depois circulou pelo <i>Zorra Total</i> e <i>A Praça É Nossa</i>.</p>
+      <p class="bio"><strong>O ator:</strong> Ademilson Pedro da Cruz nasceu em Muriaé (MG) em 25 de novembro de 1961. Serviu cinco anos no Exército, chegando a cabo do 4º Esquadrão de Cavalaria, antes de se mudar para Juiz de Fora e virar humorista. Chico Anysio o convidou em 1990 depois de assistir a uma fita de vídeo com suas apresentações. Afastou-se da TV e vive de forma reclusa, mas continua rodando o país com shows do personagem.</p>
+    </article>
+
+    <article class="card">
+      <h4>Mallandro</h4>
+      <p class="who">Sérgio Mallandro <span class="yrs">(n. 1955)</span></p>
+      <p>O aluno bagunceiro — o próprio Sérgio Mallandro sentado numa carteira, com a mesma energia dos programas infantis.</p>
+      <p class="bio"><strong>O ator:</strong> Sérgio Neiva Cavalcanti, carioca nascido em 12 de outubro de 1955, morador de Marechal Hermes quando foi descoberto por Silvio Santos no quadro "Cidade contra Cidade". Trocou o SBT pela Globo em 1990, foi aluno da Escolinha e, na sequência, apresentou o <i>Show do Mallandro</i> (1991–1993). No mesmo período fez <i>Lua de Cristal</i> ao lado de Xuxa. Mais de quarenta anos de carreira.</p>
+    </article>
+
+  </div>
+
+  <div class="turma"><h3>Reforços de 1990 e 1991</h3><span>chegam com o programa já no ar</span></div>
+  <div class="roll">
+
+    <article class="card">
+      <h4>Galeão Cumbica</h4>
+      <p class="who">Rony Cócegas <span class="yrs">(1940–1999)</span></p>
+      <p>Entrou em setembro de 1990. Nome de aeroporto duplo — Galeão e Cumbica — para um tipo atrapalhado e barulhento.</p>
+      <p class="bio"><strong>O ator:</strong> Ronilson Nogueira Moreira nasceu em Salvador em 17 de abril de 1940. Baterista antes de humorista, chegou a tocar em shows de Raul Seixas na Bahia e estudou na Universidade da Bahia na mesma época de Gilberto Gil, Caetano Veloso e Gal Costa. Estreou na TV Excelsior em 1967 fazendo imitações no programa de Raul Gil. Foi o Maionese de <i>Os Pankekas</i>, o Kuki do <i>Bozo</i> e o Lindeza de <i>A Praça É Nossa</i>. Morreu em São Paulo em 25 de julho de 1999, aos 59 anos, de falência múltipla de órgãos ligada ao alcoolismo.</p>
+    </article>
+
+    <article class="card">
+      <h4>Dona Amparito Pêra</h4>
+      <p class="who">Nélia Paula <span class="yrs">(m. 2002)</span></p>
+      <p>Entrou em setembro de 1990. A hispânica da turma. A atriz fez ainda, no programa, Dona Clara e Dona Cora.</p>
+      <p class="bio"><strong>A atriz:</strong> Nélia Paula, veterana do rádio e da TV. Morreu em 8 de setembro de 2002, vítima de infarto fulminante.</p>
+    </article>
+
+    <article class="card">
+      <h4>Célia Caridosa de Melo &nbsp;·&nbsp; Marta Suplício</h4>
+      <p class="who">Nádia Maria</p>
+      <p>Célia entrou em setembro de 1990 — a aluna obcecada por economia. Depois a atriz emplacou a Marta Suplício, sátira direta da política Marta Suplicy.</p>
+      <p class="bio"><strong>A atriz:</strong> Nádia Maria, comediante de TV com passagens por humorísticos da Globo nos anos 1980 e 1990.</p>
+    </article>
+
+    <article class="card">
+      <h4>Capitulina "Capitu" Novela</h4>
+      <p class="who">Cláudia Mauro <span class="yrs">(n. 1969)</span></p>
+      <p>A aluna melodramática, que respondia tudo como se estivesse num folhetim das oito — o sobrenome entregava a piada. Estreou em 1991.</p>
+      <p class="bio"><strong>A atriz:</strong> Claudia Fellipe di Mauro nasceu no Rio em 11 de fevereiro de 1969. Estudou no Tablado e na Casa de Artes de Laranjeiras e é formada em Letras pela PUC-Rio; estreou profissionalmente no teatro em 1981. A Escolinha foi sua estreia na TV. Depois fez Valquíria em <i>História de Amor</i> (1995), a babá Lisa em <i>Por Amor</i> (1997), a vilã Simone em <i>Estrela de Fogo</i> (1998), Angélica em <i>Páginas da Vida</i> (2006) e Maria, mãe de Jesus, na novela <i>Jesus</i> (2018). É casada com o ator Paulo César Grande.</p>
+    </article>
+
+    <article class="card">
+      <h4>Salim Muchiba</h4>
+      <p class="who">João Elias <span class="yrs">(1944?–2017)</span></p>
+      <p>O turco comerciante, arqui-inimigo comercial de Samuel Blaustein. A rivalidade dos dois era um número recorrente do programa. Entrou em outubro de 1991.</p>
+      <p class="bordao">"Professor faz a pergunta, Salim dá a resposta" &nbsp;·&nbsp; "Pergunta à vista que eu respondo à prestação"</p>
+      <p class="bio"><strong>O ator:</strong> João Antonio Elias de Oliveira era de Catanduva (SP) e começou como humorista na Rádio Difusora local — 67 anos antes de morrer. Além de ator, era pintor e escritor, com sete livros publicados; o último, <i>Tonico e Jesuíno — casos de um, piadas do outro</i>, saiu em 2013. Foi casado 46 anos com Nazira Márcia Elias de Oliveira; teve três filhos e três netos. Morreu em março de 2017, aos 72 anos, após um AVC.</p>
+    </article>
+
+    <article class="card">
+      <h4>Dona Catifunda</h4>
+      <p class="who">Zilda Cardoso <span class="yrs">(1936–2019)</span></p>
+      <p>A mendiga debochada, de roupas esfarrapadas e língua afiada — personagem que a atriz criou fora da Escolinha e levou para várias fases da TV brasileira. Entrou em outubro de 1991.</p>
+      <p class="bio"><strong>A atriz:</strong> Zilda Cardoso nasceu em São Paulo em 4 de janeiro de 1936. Estreou na TV Paulista no início dos anos 1960, substituindo Eloísa Mafalda num humorístico, e ganhou projeção nacional em <i>O Riso é o Limite</i> e <i>A Praça da Alegria</i>, de Manoel de Nóbrega. Levou a Catifunda para <i>Praça Brasil</i>, <i>A Praça É Nossa</i> e a Escolinha. Fez também novelas e séries na Globo — <i>Meu Bem, Meu Mal</i>, <i>Os Trapalhões</i>, <i>Delegacia de Mulheres</i>, <i>Você Decide</i>. Morreu em São Paulo em 20 de dezembro de 2019, aos 83 anos.</p>
+    </article>
+
+    <article class="card">
+      <h4>Capilé Sorriso</h4>
+      <p class="who">Tim Rescala <span class="yrs">(n. 1961)</span></p>
+      <p>O aluno eternamente animado, professor de música informal da turma — sentava ao piano e monitorava o coral da sala de música. Entrou em outubro de 1991.</p>
+      <p class="bordao">"Presente e sorridente!"</p>
+      <p class="bio"><strong>O ator:</strong> Luiz Augusto Rescala nasceu no Rio em 21 de novembro de 1961, numa família de músicos — pai barítono do coro do Theatro Municipal, mãe cantora e organista de igreja. Estudou piano na Escola de Música da UFRJ (1976–78) e contraponto, arranjo e composição na Villa-Lobos (1979–83). Chico Anysio o chamou para ser músico e ator ao mesmo tempo, e criou o personagem para ele. É compositor de trilhas para TV e teatro — parceiro frequente de Luiz Fernando Carvalho em <i>Hoje é Dia de Maria</i> e <i>Capitu</i> — e diretor teatral premiado.</p>
+    </article>
+
+  </div>
+
+  <div class="turma"><h3>Turma de 1992</h3><span>a escola ganha sala de música, academia e cantina</span></div>
+  <div class="roll">
+
+    <article class="card">
+      <h4>João Canabrava</h4>
+      <p class="who">Tom Cavalcante <span class="yrs">(n. 1962)</span></p>
+      <p>O nordestino de fala rápida e raciocínio torto que apresentou Tom Cavalcante ao Brasil. A estreia dele na TV Globo, em 12 de outubro de 1992, foi exatamente nesse papel.</p>
+      <p class="bio"><strong>O ator:</strong> Antônio José Rodrigues Cavalcante nasceu em Fortaleza em 8 de março de 1962. Começou em 1976 se apresentando em bares do Ceará com esquetes e imitações; foi âncora de telejornal, revisor de textos e locutor de rádio antes da TV. Depois da Escolinha, virou um dos maiores humoristas do país — deixou a Globo pela Record, onde comandou o <i>Show do Tom</i> por oito anos, até 2011. Também é conhecido pelo personagem Ribamar e pela série de filmes <i>Os Parças</i>.</p>
+    </article>
+
+    <article class="card">
+      <h4>Patropi</h4>
+      <p class="who">Orival Pessini <span class="yrs">(1944–2016)</span></p>
+      <p>O hippie universitário eterno: chegava atrasado, saía mais cedo e respondia tudo com uma nuvem de "sei lá". Nasceu em 1988 no <i>Praça Brasil</i>, da Bandeirantes, e foi convidado para a Escolinha depois.</p>
+      <p class="bordao">"Pá daqui, pá dali, pá de lá, pá de cá… Sei lá, entende?" &nbsp;·&nbsp; "Sem crise, meu!"</p>
+      <p class="bio"><strong>O ator:</strong> Orival Pessini nasceu em Pompeia (SP) em 6 de agosto de 1944. Estreou na TV Tupi em 1963, no infantil <i>Quem Conta Um Conto</i>. Criou o <strong>Fofão</strong> em 1983 — um dos personagens infantis mais populares da história da TV brasileira — além de Patropi, Sócrates, Juvenal e Ranulpho Pereira. Morreu em 14 de outubro de 2016, aos 72 anos, de câncer no fígado e no baço.</p>
+    </article>
+
+    <article class="card">
+      <h4>Sócrates Homem de Mello</h4>
+      <p class="who">Orival Pessini <span class="yrs">(1944–2016)</span></p>
+      <p>Um macaco aluno, que respondia às perguntas do professor argumentando que o jeito do macaco é sempre mais correto que o jeito do homem. Deixava o Raimundo sem resposta.</p>
+      <p class="bio"><strong>O ator:</strong> segundo personagem de Orival Pessini na Escolinha — ver acima.</p>
+    </article>
+
+    <article class="card">
+      <h4>Seu Batista</h4>
+      <p class="who">Eliezer Motta <span class="yrs">(n. 1945)</span></p>
+      <p>O ingênuo absoluto, vindo do <i>Viva o Gordo</i> para a Escolinha em 1992. Era o melhor "escada" da televisão brasileira: o aluno cuja função era servir a piada ao professor com uma sinceridade desarmante.</p>
+      <p class="bio"><strong>O ator:</strong> Eliezer da Silva Motta, carioca nascido em 10 de julho de 1945. Antes de ser ator foi paraquedista do Exército e detetive da Polícia Civil do Rio, entre 1962 e 1987. Trabalhou com Jô Soares de 1981 a 1987 — no <i>Viva o Gordo</i> fazia o Carlos Suely, parceiro do Capitão Gay — e depois com Renato Aragão em <i>A Turma do Didi</i>. Levou o Seu Batista também para a <i>Escolinha do Gugu</i>.</p>
+    </article>
+
+    <article class="card">
+      <h4>Bill Bebes</h4>
+      <p class="who">Geraldo Alves</p>
+      <p>Sátira do repórter policial Gil Gomes: narrava qualquer resposta com a solenidade sensacionalista do jornalismo de crime.</p>
+      <p class="bio"><strong>O ator:</strong> Geraldo Alves, comediante de televisão, integrou a turma de 1992.</p>
+    </article>
+
+    <article class="card">
+      <h4>Gardênia Alves</h4>
+      <p class="who">Fafy Siqueira</p>
+      <p>A cantora de fados da turma — respondia à arguição em português de Portugal e cantando. A atriz voltaria em 1995 com outro personagem, Humberto Carlos.</p>
+      <p class="bio"><strong>A atriz:</strong> Fafy Siqueira, atriz, cantora e humorista de longa carreira no teatro musical e na televisão brasileira.</p>
+    </article>
+
+    <article class="card">
+      <h4>Pretória</h4>
+      <p class="who">Marilu Bueno</p>
+      <p>Personagem da turma de 1992.</p>
+      <p class="bio"><strong>A atriz:</strong> Marilu Bueno, atriz de teatro, cinema e TV com passagens por diversos humorísticos.</p>
+    </article>
+
+    <article class="card">
+      <h4>Nelson Piquete &nbsp;·&nbsp; Celso Piquete</h4>
+      <p class="who">Antônio Pedro <span class="yrs">(1940–2023)</span></p>
+      <p>O metalúrgico da turma de 1992 — o mesmo ator do Seu Bicalho acumulando personagens, prática comum no programa.</p>
+      <p class="bio"><strong>O ator:</strong> ver a ficha do Seu Bicalho, acima.</p>
+    </article>
+
+    <article class="card">
+      <h4>Tarik Adula</h4>
+      <p class="who">Marcelo Caridad</p>
+      <p>O puxa-saco declarado, que jurava amor ao professor a cada aula — o nome é a piada: "adula".</p>
+      <p class="bio"><strong>O ator:</strong> Marcelo Caridad, ator e comediante brasileiro.</p>
+    </article>
+
+    <article class="card">
+      <h4>Pedro Pedreira</h4>
+      <p class="who">Francisco Milani <span class="yrs">(1936–2005)</span></p>
+      <p>O advogado cético e mal-humorado, que contestava a autoridade do professor com juridiquês. Na Nova Geração o personagem reaparece como Pedro Pereira.</p>
+      <p class="bordao">"Pedra noventa, só enfrenta quem aguenta!"</p>
+      <p class="bio"><strong>O ator:</strong> Francisco Milani nasceu em São Paulo em 19 de novembro de 1936. Ator, dublador, diretor de televisão e político — era militante comunista. Entrou na comédia nos anos 1980 pelo <i>Viva o Gordo</i>, de Jô Soares, e foi diretor do programa entre 1985 e 1987. Especializou-se em tipos ranzinzas; além do Pedro Pedreira, ficou marcado pelo Saraiva do <i>Zorra Total</i>. Morreu no Rio em 13 de agosto de 2005, aos 68 anos.</p>
+    </article>
+
+    <article class="card">
+      <h4>Armando Volta</h4>
+      <p class="who">David Pinheiro</p>
+      <p>Também chamado de Sambarilove. Tentava subornar o professor para arrancar as respostas por vias indiretas, sempre com uma reverência exagerada.</p>
+      <p class="bordao">"Eis-me aqui, digníssimo"</p>
+      <p class="bio"><strong>O ator:</strong> David Pinheiro ganhou fama nacional justamente com Armando Volta, e manteve o personagem em sala até a fase final do programa.</p>
+    </article>
+
+  </div>
+
+  <div class="turma"><h3>Turmas de 1993, 1994 e 1995</h3><span>as últimas levas antes do encerramento</span></div>
+  <div class="roll">
+
+    <article class="card">
+      <h4>Seu Tabajara</h4>
+      <p class="who">Paulo Silvino <span class="yrs">(1939–2017)</span></p>
+      <p>Aluno da fase final: entrou em 1993 e ficou até o encerramento, em 1995.</p>
+      <p class="bio"><strong>O ator:</strong> Paulo Ricardo Campos Silvino, carioca nascido em 27 de julho de 1939. Filho do comediante Silvério Silvino Neto e da pianista Noêmia Campos Silvino. Passou pelo rádio e pela TV Rio antes de entrar na recém-fundada TV Globo em 1966, para apresentar o <i>Canal 0</i>. Cinquenta e dois anos de televisão: <i>Balança Mas Não Cai</i> (1968), <i>Faça Humor, Não Faça Guerra</i> (1970), <i>Satiricom</i> (1973), <i>Planeta dos Homens</i> (1976), <i>Viva o Gordo</i> (1981), <i>Zorra Total</i> (1999). Seu último trabalho foi o <i>Zorra</i>, em 2017. Morreu em 17 de agosto de 2017, aos 78 anos, de câncer no estômago.</p>
+    </article>
+
+    <article class="card">
+      <h4>Zé Modesto</h4>
+      <p class="who">João Netto</p>
+      <p>Entrou em abril de 1993.</p>
+      <p class="bio"><strong>O ator:</strong> João Netto, humorista que ficou conhecido do público justamente pelo personagem.</p>
+    </article>
+
+    <article class="card">
+      <h4>Thalia</h4>
+      <p class="who">Cláudia Rodrigues <span class="yrs">(n. 1970)</span></p>
+      <p>Uma das primeiras aparições nacionais da comediante, que seguiria na Escolinha até a fase de 2001.</p>
+      <p class="bio"><strong>A atriz:</strong> Cláudia Rodrigues, humorista mineira que se tornaria nacionalmente conhecida como a Marinete de <i>A Diarista</i>. Convive com esclerose múltipla, diagnosticada em 2000, e voltou aos palcos diversas vezes desde então.</p>
+    </article>
+
+    <article class="card">
+      <h4>João Abre-Alas</h4>
+      <p class="who">Antônio Pedro <span class="yrs">(1940–2023)</span></p>
+      <p>Personagem de 1994 — terceiro tipo de Antônio Pedro na Escolinha.</p>
+      <p class="bio"><strong>O ator:</strong> ver a ficha do Seu Bicalho.</p>
+    </article>
+
+    <article class="card">
+      <h4>Waldemar Motta</h4>
+      <p class="who">Colé Santana <span class="yrs">(1920–2000)</span></p>
+      <p>Entrou na turma de 1995, a última da primeira fase.</p>
+      <p class="bio"><strong>O ator:</strong> Colé Santana, veterano do circo, do teatro de revista e da chanchada, um dos grandes comediantes populares brasileiros do século XX. Morreu em 29 de agosto de 2000, aos 80 anos, de falência múltipla de órgãos.</p>
+    </article>
+
+    <article class="card">
+      <h4>Pedro Bó</h4>
+      <p class="who">André Mattos</p>
+      <p>Entrou em 1995 e voltaria em 2001, com outro personagem — o Fininho.</p>
+      <p class="bio"><strong>O ator:</strong> André Mattos, ator e comediante mineiro, conhecido também por trabalhos no cinema e em séries de humor.</p>
+    </article>
+
+    <article class="card">
+      <h4>Humberto Carlos</h4>
+      <p class="who">Fafy Siqueira</p>
+      <p>Segundo personagem de Fafy Siqueira no programa, na turma de 1995.</p>
+      <p class="bio"><strong>A atriz:</strong> ver a ficha de Gardênia Alves.</p>
+    </article>
+
+  </div>
+
+  <div class="turma"><h3>Outros alunos da fase clássica</h3><span>tipos que passaram pela sala entre 1990 e 1995</span></div>
+  <div class="roll">
+
+    <article class="card">
+      <h4>Amâncio Andorinha</h4>
+      <p class="who">Agildo Ribeiro <span class="yrs">(1932–2018)</span></p>
+      <p class="bio"><strong>O ator:</strong> Agildo Ribeiro, o "Comandante", foi um dos maiores comediantes da televisão brasileira, com carreira que atravessou a TV Rio, a Tupi, o SBT e a Globo. Morreu em 28 de abril de 2018, aos 86 anos, de problemas cardíacos.</p>
+    </article>
+
+    <article class="card">
+      <h4>Dirceu Borboleta</h4>
+      <p class="who">Emiliano Queiroz</p>
+      <p class="bio"><strong>O ator:</strong> Emiliano Queiroz, cearense, um dos atores mais longevos e queridos da dramaturgia brasileira — de <i>O Bem-Amado</i> a <i>Gabriela</i> e <i>A Grande Família</i>.</p>
+    </article>
+
+    <article class="card">
+      <h4>Carlos Carreta</h4>
+      <p class="who">Roberto Guilherme</p>
+      <p class="bio"><strong>O ator:</strong> Roberto Guilherme, eternizado como o Sargento Pincel de <i>Os Trapalhões</i>, com décadas de trabalho em humorísticos da Globo.</p>
+    </article>
+
+    <article class="card">
+      <h4>Bebeto</h4>
+      <p class="who">Eri Johnson</p>
+      <p class="bio"><strong>O ator:</strong> Eri Johnson, humorista carioca, também conhecido por <i>Zorra Total</i>, <i>Sob Nova Direção</i> e apresentações musicais.</p>
+    </article>
+
+    <article class="card">
+      <h4>Gaudêncio</h4>
+      <p class="who">Ivon Curi <span class="yrs">(1928–1995)</span></p>
+      <p class="bio"><strong>O ator:</strong> Ivon Curi, cantor, ator e humorista, uma das vozes mais populares do rádio brasileiro nos anos 1950 e 1960. Morreu em 24 de junho de 1995, aos 67 anos.</p>
+    </article>
+
+    <article class="card">
+      <h4>Milha</h4>
+      <p class="who">Paulette</p>
+      <p class="bio"><strong>A atriz:</strong> Paulette, comediante de televisão que integrou o elenco da Escolinha na fase clássica.</p>
+    </article>
+
+    <article class="card">
+      <h4>Brasilino</h4>
+      <p class="who">Bemvindo Sequeira</p>
+      <p class="bio"><strong>O ator:</strong> Bemvindo Sequeira, ator, diretor e dramaturgo com longa carreira em novelas, cinema e teatro.</p>
+    </article>
+
+    <article class="card">
+      <h4>Dona Charanga</h4>
+      <p class="who">Marina Miranda <span class="yrs">(1931–2021)</span></p>
+      <p class="bio"><strong>A atriz:</strong> Marina Miranda, veterana da comédia brasileira. Morreu em 21 de setembro de 2021, aos 90 anos, de infecção urinária e doença pulmonar, depois de anos convivendo com Alzheimer.</p>
+    </article>
+
+    <article class="card">
+      <h4>Candinho Manso</h4>
+      <p class="who">Iran Lima</p>
+      <p class="bio"><strong>O ator:</strong> Iran Lima, comediante de rádio e televisão. Morreu aos 89 anos.</p>
+    </article>
+
+    <article class="card">
+      <h4>Pedro Vaz Calminho</h4>
+      <p class="who">Luiz Carlos Tourinho <span class="yrs">(1964–2008)</span></p>
+      <p class="bio"><strong>O ator:</strong> Luiz Carlos Tourinho morreu em 21 de janeiro de 2008, aos 43 anos, vítima de aneurisma cerebral.</p>
+    </article>
+
+    <article class="card">
+      <h4>Gaúcho</h4>
+      <p class="who">Cláudio Cunha <span class="yrs">(1946–2015)</span></p>
+      <p class="bio"><strong>O ator:</strong> Cláudio Cunha morreu em 20 de abril de 2015, aos 68 anos, após um infarto.</p>
+    </article>
+
+    <article class="card">
+      <h4>Manguaça</h4>
+      <p class="who">David Cunha <span class="yrs">(1957–2006)</span></p>
+      <p class="bio"><strong>O ator:</strong> David Cunha morreu em 24 de novembro de 2006, aos 49 anos, em acidente de carro.</p>
+    </article>
+
+    <article class="card">
+      <h4>Santinha Pureza</h4>
+      <p class="who">Nádia Carvalho <span class="yrs">(1955–2022)</span></p>
+      <p class="bio"><strong>A atriz:</strong> Nádia Carvalho morreu em 11 de julho de 2022, aos 67 anos, após um AVC fulminante.</p>
+    </article>
+
+    <article class="card">
+      <h4>O diretor da Escolinha</h4>
+      <p class="who">Luís Delfino <span class="yrs">(1942–2025)</span></p>
+      <p>A autoridade máxima da escola, acima até de Dona Escolástica.</p>
+      <p class="bio"><strong>O ator:</strong> Luís Delfino morreu em 25 de maio de 2025, aos 83 anos.</p>
+    </article>
+
+  </div>
+
+</div>
+
+<section id="turma2001">
+  <div class="wrap col">
+    <p class="kicker">Parte cinco</p>
+    <h2>A turma de 2001</h2>
+    <p>Seis anos depois do encerramento, a Globo devolveu a Escolinha ao ar como programa solo, de segunda a sexta, entre <strong>26 de março e 28 de dezembro de 2001</strong>. Chico Anysio tinha 70 anos e montou uma sala nova: veteranos como Seu Peru, Rolando Lero, Cacilda, Zé Bonitinho e Batista dividiram carteira com uma geração inteira de humoristas jovens.</p>
+    <p>Foi também a temporada mais melancólica. Ao fim de cada programa, Chico relembrava os melhores momentos dos alunos que já haviam morrido e encerrava com um bordão novo: <em>"e a saudade, ó!…"</em>. Às sextas-feiras, a homenagem era sempre para Walter D'Ávila, o Baltazar da Rocha.</p>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="turma"><h3>Turma de 2001</h3><span>a última sala de Chico Anysio</span></div>
+  <div class="roll">
+
+    <article class="card">
+      <h4>Dona Tati</h4>
+      <p class="who">Heloísa Périssé <span class="yrs">(n. 1966)</span></p>
+      <p>A adolescente que abusava de gírias para responder a qualquer pergunta. Não foi criada para a Escolinha, mas explodiu ali — e virou o personagem mais famoso da carreira da atriz.</p>
+      <p class="bio"><strong>A atriz:</strong> Heloísa Perlingeiro Périssé nasceu no Rio em 19 de agosto de 1966 e estudou na Casa das Artes de Laranjeiras e no Tablado. Depois da Escolinha, levou a Tati para um quadro do <i>Fantástico</i> (2002–2003) e, onze anos após a estreia do personagem, para o cinema, em <i>O Diário de Tati</i> (2012). Com Ingrid Guimarães, criou em 2001 o espetáculo <i>Cócegas</i> e a sitcom <i>Sob Nova Direção</i> (2004–2007). Foi casada com Lug de Paula, o Seu Boneco.</p>
+    </article>
+
+    <article class="card">
+      <h4>Leandra Borges</h4>
+      <p class="who">Ingrid Guimarães <span class="yrs">(n. 1972)</span></p>
+      <p>Estreou na turma de 2001.</p>
+      <p class="bio"><strong>A atriz:</strong> Ingrid Guimarães, mineira de Sete Lagoas, viraria uma das maiores bilheterias da comédia brasileira no cinema — <i>De Pernas pro Ar</i>, <i>Loucas pra Casar</i>, <i>Fala Sério, Mãe!</i> — além de <i>Sob Nova Direção</i>, ao lado de Heloísa Périssé.</p>
+    </article>
+
+    <article class="card">
+      <h4>Paulinho Gogó</h4>
+      <p class="who">Maurício Manfrini</p>
+      <p>O carioca de fala mansa e lábia infinita. Passou pela Escolinha de 2001 e depois se tornaria um dos personagens mais populares do <i>Zorra Total</i>.</p>
+      <p class="bio"><strong>O ator:</strong> Maurício Manfrini criou o Paulinho Gogó a partir de tipos do subúrbio carioca; hoje é também um dos nomes mais ouvidos do humor em podcast no Brasil.</p>
+    </article>
+
+    <article class="card">
+      <h4>Fininho</h4>
+      <p class="who">André Mattos</p>
+      <p>Segundo personagem do ator no programa, depois do Pedro Bó de 1995.</p>
+      <p class="bio"><strong>O ator:</strong> ver a ficha de Pedro Bó.</p>
+    </article>
+
+    <article class="card">
+      <h4>Carequinha</h4>
+      <p class="who">Carequinha <span class="yrs">(1915–2006)</span></p>
+      <p>O palhaço mais famoso do Brasil participou da última fase da Escolinha interpretando <strong>ele mesmo</strong>.</p>
+      <p class="bio"><strong>O artista:</strong> George Savalla Gomes, o Carequinha, foi a maior figura do circo brasileiro no século XX e um dos primeiros palhaços a se tornar celebridade de televisão.</p>
+    </article>
+
+    <article class="card">
+      <h4>Dicró</h4>
+      <p class="who">Dicró <span class="yrs">(1943–2009)</span></p>
+      <p>Como Carequinha, entrou em sala como ele mesmo.</p>
+      <p class="bio"><strong>O artista:</strong> Carlos Roberto de Oliveira, o Dicró, foi sambista e compositor carioca de humor deliberadamente debochado, dono de sucessos como <i>Rala o Coco</i>. Morreu em 25 de abril de 2009, aos 66 anos, de infarto.</p>
+    </article>
+
+    <article class="card">
+      <h4>Professor Eteovaldo</h4>
+      <p class="who">Dary Reis</p>
+      <p>Um colega de magistério — a escola de 2001 tinha mais de um professor.</p>
+      <p class="bio"><strong>O ator:</strong> Dary Reis, veterano de novelas e humorísticos da televisão brasileira.</p>
+    </article>
+
+    <article class="card">
+      <h4>Maria Angélica</h4>
+      <p class="who">Alcione Mazzeo</p>
+      <p class="bio"><strong>A atriz:</strong> Alcione Mazzeo, atriz de novelas e cinema — e mãe de Bruno Mazzeo, que quatorze anos depois assumiria o papel do Professor Raimundo.</p>
+    </article>
+
+    <article class="card">
+      <h4>Tereza Mercantil</h4>
+      <p class="who">Totia Meireles</p>
+      <p class="bio"><strong>A atriz:</strong> Totia Meireles, atriz e cantora com longa carreira em novelas da Globo e no teatro musical.</p>
+    </article>
+
+    <article class="card">
+      <h4>Vanilha &nbsp;·&nbsp; Maria Menina</h4>
+      <p class="who">Dhu Moraes</p>
+      <p class="bio"><strong>A atriz:</strong> Dhu Moraes, atriz e cantora baiana, presença marcante em novelas e no teatro negro brasileiro.</p>
+    </article>
+
+    <article class="card">
+      <h4>Rosinha</h4>
+      <p class="who">Viviane Araújo</p>
+      <p class="bio"><strong>A atriz:</strong> Viviane Araújo, rainha de bateria e atriz, então em início de carreira na televisão.</p>
+    </article>
+
+    <article class="card">
+      <h4>Dona Flor</h4>
+      <p class="who">Aldine Muller</p>
+      <p class="bio"><strong>A atriz:</strong> Aldine Muller, atriz que ficou conhecida no cinema brasileiro dos anos 1970 e 1980.</p>
+    </article>
+
+    <article class="card">
+      <h4>Terezuda</h4>
+      <p class="who">Elaine Mickely</p>
+      <p class="bio"><strong>A atriz:</strong> Elaine Mickely, atriz e apresentadora.</p>
+    </article>
+
+    <article class="card">
+      <h4>Funkeiro &nbsp;·&nbsp; Eça de Quental</h4>
+      <p class="who">Eduardo Martini</p>
+      <p class="bio"><strong>O ator:</strong> Eduardo Martini, ator e comediante, com dois personagens na turma de 2001.</p>
+    </article>
+
+    <article class="card">
+      <h4>José Bonvê</h4>
+      <p class="who">Antônio Pedro <span class="yrs">(1940–2023)</span></p>
+      <p>Quarto personagem do ator na Escolinha, onze anos depois do Bicalho.</p>
+      <p class="bio"><strong>O ator:</strong> ver a ficha do Seu Bicalho.</p>
+    </article>
+
+    <article class="card">
+      <h4>Neura</h4>
+      <p class="who">Alice Borges</p>
+      <p class="bio"><strong>A atriz:</strong> Alice Borges, atriz de televisão e teatro.</p>
+    </article>
+
+    <article class="card">
+      <h4>Aranha</h4>
+      <p class="who">André Lucas</p>
+      <p class="bio"><strong>O ator:</strong> André Lucas, ator da turma de 2001.</p>
+    </article>
+
+    <article class="card">
+      <h4>Sivi</h4>
+      <p class="who">Athayde Arcoverde</p>
+      <p class="bio"><strong>O ator:</strong> Athayde Arcoverde, ator e comediante da turma de 2001.</p>
+    </article>
+
+    <article class="card">
+      <h4>Tesinha</h4>
+      <p class="who">Daniele Valente</p>
+      <p class="bio"><strong>A atriz:</strong> Daniele Valente, atriz da turma de 2001.</p>
+    </article>
+
+  </div>
+</div>
+
+<section id="nova">
+  <div class="wrap col">
+    <p class="kicker">Parte seis</p>
+    <h2>A Nova Geração &nbsp;<span class="dim" style="font-weight:400">2015–2021</span></h2>
+    <p>Em 2015, para marcar os 25 anos do programa solo, o <strong>Canal Viva</strong> remontou a Escolinha. O projeto é, de saída, um assunto de família: <strong>Bruno Mazzeo</strong>, filho de Chico, faz o Professor Raimundo Nonato; <strong>Cininha de Paula</strong>, sobrinha de Chico e filha de Lupe Gigliotti, dirige; <strong>Nizo Neto</strong>, outro filho, assina a redação; e <strong>Lúcio Mauro Filho</strong> herda o Aldemar Vigário do próprio pai. Cininha ainda entra em cena como Dona Escolástica, o papel que era da mãe.</p>
+    <p>A fórmula é a mesma — chamada, arguição, bordão, vapt-vupt — com os personagens originais entregues a uma nova geração de comediantes. Foram seis temporadas no Viva, reprisadas anualmente na Globo em janeiro, como programação de férias. A sexta e última, gravada em 2020, incorporou álcool em gel e distanciamento à sala de aula.</p>
+
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Temporada</th><th>Exibição</th><th>Episódios</th><th>O que mudou</th></tr></thead>
+        <tbody>
+          <tr><td class="char">1ª</td><td>nov/2015 – jan/2016</td><td>7</td><td>especial de 25 anos; elenco-base formado</td></tr>
+          <tr><td class="char">2ª</td><td>set/2016 – fev/2017</td><td>17</td><td>temporada cheia, mesmo elenco</td></tr>
+          <tr><td class="char">3ª</td><td>set/2017 – mar/2018</td><td>16</td><td>saem Fernanda Souza e Otaviano Costa; entra Marco Luque como Nerso</td></tr>
+          <tr><td class="char">4ª</td><td>set/2018 – fev/2019</td><td>14</td><td>Gui Santana assume o Nerso; Marco Luque migra para o Patropi</td></tr>
+          <tr><td class="char">5ª</td><td>jul/2019 – out/2019</td><td>13</td><td>seis alunos novos; Orlando Drummond, aos 99, grava participação</td></tr>
+          <tr><td class="char">6ª</td><td>out/2020 – jan/2021</td><td>15</td><td>última; Marcelo Serrado assume Ptolomeu; sala em protocolo de covid</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="turma"><h3>Elenco-base</h3><span>Canal Viva, a partir de 2015</span></div>
+  <div class="roll">
+
+    <article class="card">
+      <h4>Rolando Lero</h4>
+      <p class="who">Marcelo Adnet <span class="yrs">(n. 1981)</span></p>
+      <p>Herdou o enrolador-mor de Rogério Cardoso e manteve o bordão intacto.</p>
+      <p class="bio"><strong>O ator:</strong> Marcelo Adnet nasceu no Rio em 5 de setembro de 1981. Foi VJ e a principal cara do humor da MTV Brasil (<i>Comédia MTV</i>, <i>Adnet ao Vivo</i>) até ser contratado pela Globo em janeiro de 2013. Criou, com Marcius Melhem e Maurício Farias, o <i>Tá no Ar: a TV na TV</i>. É conhecido também como um dos melhores imitadores do país.</p>
+    </article>
+
+    <article class="card">
+      <h4>Dona Catifunda</h4>
+      <p class="who">Dani Calabresa <span class="yrs">(n. 1981)</span></p>
+      <p>A mendiga debochada de Zilda Cardoso, em nova voz.</p>
+      <p class="bio"><strong>A atriz:</strong> Daniella Maria Giusti Barra nasceu em 12 de novembro de 1981. Começou em 2005 no <i>Comédia ao Vivo</i>, ao lado de Danilo Gentili, Marcelo Adnet e Fábio Rabin; passou quatro anos na MTV (<i>Furo MTV</i>, <i>Comédia MTV</i>) antes da Globo. Foi casada com Marcelo Adnet entre 2010 e 2017.</p>
+    </article>
+
+    <article class="card">
+      <h4>Zé Bonitinho</h4>
+      <p class="who">Mateus Solano <span class="yrs">(n. 1981)</span></p>
+      <p>O galã de topete de Jorge Loredo, recriado por um ator mais conhecido pelo drama que pela comédia.</p>
+      <p class="bio"><strong>O ator:</strong> Mateus Solano Schenker Carneiro da Cunha nasceu em Brasília em 20 de março de 1981 e é formado em artes cênicas pela UNIRIO. Ficou nacionalmente conhecido pelo vilão Félix de <i>Amor à Vida</i> (2013), além de <i>Viver a Vida</i> e <i>Gabriela</i>.</p>
+    </article>
+
+    <article class="card">
+      <h4>Seu Peru</h4>
+      <p class="who">Marcos Caruso <span class="yrs">(n. 1952)</span></p>
+      <p>Assumir o Seu Peru era o papel de maior risco do elenco — o aluno mais identificado com o programa. Em 2019, Caruso contracenou com Orlando Drummond, então com 99 anos, numa participação especial.</p>
+      <p class="bio"><strong>O ator:</strong> Marcos Vianna Caruso nasceu em 22 de fevereiro de 1952 e é formado em Direito pelo Largo de São Francisco. Ator de palco desde jovem, virou dramaturgo nos anos 1980 e escreveu <i>Trair e Coçar, é Só Começar</i>, uma das peças de maior bilheteria da história do teatro brasileiro. Estreou na TV em 1978, na novela <i>Aritana</i>, da Tupi.</p>
+    </article>
+
+    <article class="card">
+      <h4>Aldemar Vigário</h4>
+      <p class="who">Lúcio Mauro Filho <span class="yrs">(n. 1975)</span></p>
+      <p>O único caso em que o personagem passou literalmente de pai para filho: Lúcio Mauro fez o Aldemar de 1990 a 1995; Lúcio Mauro Filho o retomou em 2015, ainda em vida do pai.</p>
+      <p class="bio"><strong>O ator:</strong> Lúcio Mauro Filho, carioca, filho de Lúcio Mauro com Ray Luiza Barbalho, ficou nacionalmente conhecido como o Tuca de <i>A Grande Família</i>, papel que fez por catorze temporadas. É também músico.</p>
+    </article>
+
+    <article class="card">
+      <h4>Dona Cacilda</h4>
+      <p class="who">Fabiana Karla <span class="yrs">(n. 1975)</span></p>
+      <p>A apaixonada pelo professor — agora perseguindo um Raimundo bem mais jovem, o que rendeu ao personagem uma camada nova de constrangimento.</p>
+      <p class="bio"><strong>A atriz:</strong> Fabiana Karla Souza Simões Barbosa nasceu no Recife em 30 de outubro de 1975. Firmou-se no <i>Zorra Total</i> e, em 2019, virou apresentadora com o <i>Se Joga</i>, que substituiu o <i>Vídeo Show</i> nas tardes da Globo.</p>
+    </article>
+
+    <article class="card">
+      <h4>Seu Boneco</h4>
+      <p class="who">Marcius Melhem <span class="yrs">(n. 1972)</span></p>
+      <p>O malandro de Caxias, agora com Lug de Paula fora da televisão.</p>
+      <p class="bio"><strong>O ator:</strong> Marcius Vinícius de Assis Melhem nasceu em Nilópolis (RJ) em 8 de fevereiro de 1972. Ator, dramaturgo e roteirista, cocriou o <i>Tá no Ar</i> e chefiou o núcleo de humor da Globo a partir de 2018.</p>
+    </article>
+
+    <article class="card">
+      <h4>Joselino Barbacena</h4>
+      <p class="who">Ângelo Antônio <span class="yrs">(n. 1964)</span></p>
+      <p>O mineiro assustadiço, agora feito por um mineiro de verdade.</p>
+      <p class="bio"><strong>O ator:</strong> Ângelo Antônio Carneiro Lopes nasceu em Curvelo (MG) em 4 de junho de 1964. Teve seu primeiro papel importante em <i>Pantanal</i> (1990) e construiu carreira sólida em novelas e cinema antes de entrar para o humor.</p>
+    </article>
+
+    <article class="card">
+      <h4>Seu Ptolomeu</h4>
+      <p class="who">Otaviano Costa &nbsp;→&nbsp; Marcelo Serrado</p>
+      <p>O nerd que corrige os colegas. Otaviano Costa fez o papel da 1ª à 2ª temporada; na 6ª, já fora da emissora, foi substituído por Marcelo Serrado.</p>
+      <p class="bio"><strong>Os atores:</strong> Otaviano Costa, ator e apresentador — <i>Vídeo Show</i>, <i>Vem Aí</i> —, deixou a Globo em 2018. Marcelo Serrado, carioca, é um dos rostos mais conhecidos da comédia da casa, do Crô de <i>Fina Estampa</i> a <i>Os Normais</i>.</p>
+    </article>
+
+    <article class="card">
+      <h4>Baltazar da Rocha</h4>
+      <p class="who">Otávio Müller <span class="yrs">(n. 1965)</span></p>
+      <p>O confuso de Walter D'Ávila.</p>
+      <p class="bio"><strong>O ator:</strong> Otávio Müller de Sá nasceu em 6 de agosto de 1965, formou-se na Casa das Artes de Laranjeiras em 1986 e nunca deixou o teatro, onde também dirige. Estreou na Globo em 1988, em <i>Vale Tudo</i>.</p>
+    </article>
+
+    <article class="card">
+      <h4>Dona Bela</h4>
+      <p class="who">Betty Gofman <span class="yrs">(n. 1965)</span></p>
+      <p>A aluna que se acha lindíssima, personagem de Zezé Macedo.</p>
+      <p class="bio"><strong>A atriz:</strong> Betty Gofman nasceu no Rio em 3 de março de 1965. Ficou conhecida em novelas e séries da Globo — entre elas <i>Sai de Baixo</i> e <i>Cheias de Charme</i> — com trânsito igualmente forte entre comédia e drama.</p>
+    </article>
+
+    <article class="card">
+      <h4>Seu Batista</h4>
+      <p class="who">Rodrigo Sant'Anna</p>
+      <p>O ingênuo de Eliezer Motta.</p>
+      <p class="bio"><strong>O ator:</strong> Rodrigo Sant'Anna, carioca, é ator, roteirista e comediante, conhecido pela galeria de tipos que criou no <i>Zorra Total</i> — entre eles a Valéria — e por sua carreira no <i>stand-up</i>.</p>
+    </article>
+
+    <article class="card">
+      <h4>Pedro Pereira</h4>
+      <p class="who">Marco Ricca <span class="yrs">(n. 1962)</span></p>
+      <p>Releitura do Pedro Pedreira de Francisco Milani: o cético de plantão.</p>
+      <p class="bio"><strong>O ator:</strong> Marco Antonio Ricca nasceu em São Paulo em 28 de novembro de 1962. Estreou na TV em 1992 como coprotagonista de <i>Renascer</i>. Atuou em <i>O Que É Isso, Companheiro?</i> (1997) e dirigiu e escreveu <i>Cabeça a Prêmio</i> (2009).</p>
+    </article>
+
+    <article class="card">
+      <h4>Dona Cândida</h4>
+      <p class="who">Maria Clara Gueiros <span class="yrs">(n. 1965)</span></p>
+      <p>A ingênua de Stella Freitas.</p>
+      <p class="bio"><strong>A atriz:</strong> Maria Clara Gueiros nasceu no Rio em 1965 e ficou conhecida do grande público no <i>Zorra Total</i>, entre 2005 e 2007, além de outros humorísticos e do teatro.</p>
+    </article>
+
+    <article class="card">
+      <h4>Marina da Glória</h4>
+      <p class="who">Fernanda de Freitas</p>
+      <p>A distraída de Tássia Camargo.</p>
+      <p class="bio"><strong>A atriz:</strong> Fernanda de Freitas, atriz carioca com carreira em novelas, séries e cinema.</p>
+    </article>
+
+    <article class="card">
+      <h4>Capitu</h4>
+      <p class="who">Ellen Rocche <span class="yrs">(n. 1979)</span></p>
+      <p>A melodramática de Cláudia Mauro.</p>
+      <p class="bio"><strong>A atriz:</strong> Ellen Rocche nasceu em 19 de julho de 1979 e começou a carreira no <i>Qual é a Música?</i>, de Silvio Santos, no SBT, antes de migrar para a Globo.</p>
+    </article>
+
+    <article class="card">
+      <h4>Armando Volta</h4>
+      <p class="who">Evandro Mesquita <span class="yrs">(n. 1952)</span></p>
+      <p>O Sambarilove de David Pinheiro, agora nas mãos de um roqueiro.</p>
+      <p class="bio"><strong>O ator:</strong> Evandro Nahid de Mesquita nasceu no Rio em 19 de fevereiro de 1952. Criou e liderou a <strong>Blitz</strong>, a banda que abriu o caminho do BRock nos anos 1980. Antes disso, integrou o grupo teatral Asdrúbal Trouxe o Trombone. É cantor, compositor, roteirista e ator.</p>
+    </article>
+
+    <article class="card">
+      <h4>Galeão Cumbica</h4>
+      <p class="who">Kiko Mascarenhas</p>
+      <p>O atrapalhado de Rony Cócegas.</p>
+      <p class="bio"><strong>O ator:</strong> Kiko Mascarenhas, ator carioca com longa trajetória em novelas, séries e teatro.</p>
+    </article>
+
+    <article class="card">
+      <h4>Tati</h4>
+      <p class="who">Fernanda Souza <span class="yrs">(n. 1984)</span></p>
+      <p>A adolescente gírias-de-fora criada por Heloísa Périssé em 2001. Tatá Werneck foi convidada primeiro e recusou; o papel ficou com Fernanda Souza, que saiu do elenco na 3ª temporada.</p>
+      <p class="bio"><strong>A atriz:</strong> Fernanda Rodrigues de Souza nasceu em São Paulo em 18 de junho de 1984 e está em televisão desde 1992 — cresceu diante das câmeras, da <i>Chiquititas</i> à comédia adulta, e também apresenta.</p>
+    </article>
+
+    <article class="card">
+      <h4>Dona Escolástica</h4>
+      <p class="who">Cininha de Paula <span class="yrs">(n. 1959)</span></p>
+      <p>A diretora do programa entra em cena para fazer a personagem que era da própria mãe, Lupe Gigliotti.</p>
+      <p class="bio"><strong>A diretora:</strong> Maria Lupicínia Viana "Cininha" de Paula Gigliotti nasceu no Rio em 23 de junho de 1959. Filha de Lupe Gigliotti, sobrinha de Chico Anysio e do cineasta Zelito Viana, prima de Marcos Palmeira, Bruno Mazzeo e Nizo Neto; foi casada com Wolf Maya e é mãe da atriz Maria Maya. Dirige desde 1999 — <i>Sai de Baixo</i>, <i>Sítio do Picapau Amarelo</i>, <i>Cobras e Lagartos</i>, <i>Aquele Beijo</i> — e comandou toda a Nova Geração.</p>
+    </article>
+
+  </div>
+
+  <div class="turma"><h3>Chegam depois</h3><span>3ª à 6ª temporada</span></div>
+  <div class="roll">
+
+    <article class="card">
+      <h4>Nerso da Capitinga &nbsp;→&nbsp; Patropi</h4>
+      <p class="who">Marco Luque</p>
+      <p>Entrou na 3ª temporada (estreia em 25 de setembro de 2017) como Nerso da Capitinga e, na 4ª, migrou para o Patropi — personagem com o qual tinha mais semelhança física.</p>
+      <p class="bio"><strong>O ator:</strong> Marco Luque, paulistano, é um dos nomes centrais do <i>stand-up</i> brasileiro, conhecido pelos personagens Mustafary e Jaersson Metalhead e por sua passagem pelo <i>CQC</i> e pelo <i>The Noite</i>.</p>
+    </article>
+
+    <article class="card">
+      <h4>Nerso da Capitinga</h4>
+      <p class="who">Gui Santana</p>
+      <p>Assumiu o caipira na 4ª temporada, quando Marco Luque trocou de personagem.</p>
+      <p class="bio"><strong>O ator:</strong> Gui Santana começou vencendo um concurso de imitadores e ficou conhecido pelo William Bombonner, sátira do jornalista William Bonner. Em 2009 entrou para o time de Marcelo Adnet no especial <i>Furfles na Praia</i>.</p>
+    </article>
+
+    <article class="card">
+      <h4>João Canabrava</h4>
+      <p class="who">Marcos Veras</p>
+      <p>Entrou na 5ª temporada, em 2019, no personagem que revelou Tom Cavalcante.</p>
+      <p class="bio"><strong>O ator:</strong> Marcos Veras, carioca, é ator e comediante de teatro, cinema e TV — <i>Vai Que Cola</i>, <i>Tá no Ar</i> — com forte trânsito no humor de improviso.</p>
+    </article>
+
+    <article class="card">
+      <h4>Capilé Sorriso</h4>
+      <p class="who">George Sauma</p>
+      <p>Entrou em 2019, na 5ª temporada, como o professor de arte da escola.</p>
+      <p class="bio"><strong>O ator:</strong> George Feris Sauma Neto é ator, músico e sapateador — perfil incomum que casa com o personagem, criado originalmente para um músico, Tim Rescala.</p>
+    </article>
+
+    <article class="card">
+      <h4>Mazarito</h4>
+      <p class="who">Leandro Hassum <span class="yrs">(n. 1973)</span></p>
+      <p>Entrou em 2019 no personagem eternizado por Costinha.</p>
+      <p class="bio"><strong>O ator:</strong> Leandro Hassum Moreira nasceu em Niterói (RJ) em 26 de setembro de 1973. Ficou conhecido como o Jorginho do <i>Zorra Total</i> e como metade de <i>Os Caras de Pau</i>. Em 2012 estrelou <i>Até que a Sorte nos Separe</i>, maior estreia do cinema nacional naquele ano, que virou trilogia.</p>
+    </article>
+
+    <article class="card">
+      <h4>Suppapou Uaçi</h4>
+      <p class="who">Welder Rodrigues</p>
+      <p>Entrou em 2019 no personagem de Jaime Filho.</p>
+      <p class="bio"><strong>O ator:</strong> Welder Rodrigues, brasiliense, integrante do grupo Os Melhores do Mundo, é ator e humorista de teatro e televisão.</p>
+    </article>
+
+    <article class="card">
+      <h4>Seu Fininho</h4>
+      <p class="who">Paulo Vieira</p>
+      <p>Entrou em 2019, no personagem que André Mattos fez em 2001.</p>
+      <p class="bio"><strong>O ator:</strong> Paulo Vieira, acreano, é roteirista, ator e apresentador — um dos humoristas mais influentes da nova geração brasileira, com trabalhos no <i>Big Terça</i>, no <i>Lady Night</i> e no <i>Fantástico</i>.</p>
+    </article>
+
+    <article class="card">
+      <h4>Seu Eustáquio</h4>
+      <p class="who">Érico Brás</p>
+      <p>Entrou na 5ª temporada, em 2019, no personagem de Grande Otelo — herança das mais pesadas do elenco.</p>
+      <p class="bio"><strong>O ator:</strong> Érico Brás, baiano, é ator e comediante, conhecido por <i>Ó Paí, Ó</i>, pelo <i>Zorra</i> e por uma atuação pública constante em torno de representatividade negra no audiovisual brasileiro.</p>
+    </article>
+
+  </div>
+</div>
+
+<section id="comparativo">
+  <div class="wrap col">
+    <p class="kicker">Parte sete</p>
+    <h2>Quem fez quem</h2>
+    <p>Os personagens que atravessaram as duas versões, lado a lado.</p>
+  </div>
+  <div class="wrap">
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Personagem</th><th>Versão clássica</th><th>Nova Geração</th></tr></thead>
+        <tbody>
+          <tr><td class="char">Professor Raimundo</td><td>Chico Anysio (1931–2012)</td><td>Bruno Mazzeo</td></tr>
+          <tr><td class="char">Seu Peru</td><td>Orlando Drummond (1919–2021)</td><td>Marcos Caruso</td></tr>
+          <tr><td class="char">Rolando Lero</td><td>Rogério Cardoso (1937–2003)</td><td>Marcelo Adnet</td></tr>
+          <tr><td class="char">Aldemar Vigário</td><td>Lúcio Mauro (1927–2019)</td><td>Lúcio Mauro Filho</td></tr>
+          <tr><td class="char">Dona Cacilda</td><td>Cláudia Jimenez (1958–2022)</td><td>Fabiana Karla</td></tr>
+          <tr><td class="char">Dona Bela</td><td>Zezé Macedo (1916–1999)</td><td>Betty Gofman</td></tr>
+          <tr><td class="char">Dona Catifunda</td><td>Zilda Cardoso (1936–2019)</td><td>Dani Calabresa</td></tr>
+          <tr><td class="char">Zé Bonitinho</td><td>Jorge Loredo (1925–2015)</td><td>Mateus Solano</td></tr>
+          <tr><td class="char">Joselino Barbacena</td><td>Antônio Carlos Pires (1927–2005)</td><td>Ângelo Antônio</td></tr>
+          <tr><td class="char">Seu Ptolomeu</td><td>Nizo Neto</td><td>Otaviano Costa, depois Marcelo Serrado</td></tr>
+          <tr><td class="char">Seu Boneco</td><td>Lug de Paula</td><td>Marcius Melhem</td></tr>
+          <tr><td class="char">Baltazar da Rocha</td><td>Walter D'Ávila (1911–1996)</td><td>Otávio Müller</td></tr>
+          <tr><td class="char">Seu Batista</td><td>Eliezer Motta</td><td>Rodrigo Sant'Anna</td></tr>
+          <tr><td class="char">Pedro Pedreira / Pereira</td><td>Francisco Milani (1936–2005)</td><td>Marco Ricca</td></tr>
+          <tr><td class="char">Dona Cândida</td><td>Stella Freitas</td><td>Maria Clara Gueiros</td></tr>
+          <tr><td class="char">Marina da Glória</td><td>Tássia Camargo</td><td>Fernanda de Freitas</td></tr>
+          <tr><td class="char">Capitu / Capitulina</td><td>Cláudia Mauro</td><td>Ellen Rocche</td></tr>
+          <tr><td class="char">Armando Volta</td><td>David Pinheiro</td><td>Evandro Mesquita</td></tr>
+          <tr><td class="char">Galeão Cumbica</td><td>Rony Cócegas (1940–1999)</td><td>Kiko Mascarenhas</td></tr>
+          <tr><td class="char">Dona Escolástica</td><td>Lupe Gigliotti (1926–2010)</td><td>Cininha de Paula (filha dela)</td></tr>
+          <tr><td class="char">Tati</td><td>Heloísa Périssé</td><td>Fernanda Souza</td></tr>
+          <tr><td class="char">Patropi</td><td>Orival Pessini (1944–2016)</td><td>Marco Luque</td></tr>
+          <tr><td class="char">Nerso da Capitinga</td><td>Pedro Bismarck</td><td>Marco Luque, depois Gui Santana</td></tr>
+          <tr><td class="char">João Canabrava</td><td>Tom Cavalcante</td><td>Marcos Veras</td></tr>
+          <tr><td class="char">Capilé Sorriso</td><td>Tim Rescala</td><td>George Sauma</td></tr>
+          <tr><td class="char">Seu Mazarito</td><td>Costinha (1923–1995)</td><td>Leandro Hassum</td></tr>
+          <tr><td class="char">Seu Eustáquio</td><td>Grande Otelo (1915–1993)</td><td>Érico Brás</td></tr>
+          <tr><td class="char">Suppapau Uaçu</td><td>Jaime Filho (1930–2017)</td><td>Welder Rodrigues</td></tr>
+          <tr><td class="char">Seu Fininho</td><td>André Mattos</td><td>Paulo Vieira</td></tr>
+          <tr><td class="char">Bertoldo Brecha</td><td>Mário Tupinambá (1932–2010)</td><td>— não voltou</td></tr>
+          <tr><td class="char">Samuel Blaustein</td><td>Marcos Plonka (1939–2011)</td><td>— não voltou</td></tr>
+          <tr><td class="char">Salim Muchiba</td><td>João Elias (m. 2017)</td><td>— não voltou</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="memoriam">
+  <div class="wrap col">
+    <p class="kicker">Parte oito</p>
+    <h2>In memoriam</h2>
+    <p>A Escolinha durou tanto que virou, involuntariamente, um retrato de duas ou três gerações inteiras do humor brasileiro. Estes são os alunos que já não respondem à chamada.</p>
+  </div>
+  <div class="wrap">
+    <ul class="memoriam">
+      <li><b>Olney Cazarré</b> — João Bacorinho <span>19 de janeiro de 1991, aos 45 anos</span></li>
+      <li><b>Grande Otelo</b> — Seu Eustáquio <span>26 de novembro de 1993, aos 78 anos</span></li>
+      <li><b>Ivon Curi</b> — Gaudêncio <span>24 de junho de 1995, aos 67 anos</span></li>
+      <li><b>Costinha</b> — Seu Mazarito <span>15 de setembro de 1995, aos 72 anos</span></li>
+      <li><b>Walter D'Ávila</b> — Baltazar da Rocha <span>19 de abril de 1996, aos 84 anos</span></li>
+      <li><b>Brandão Filho</b> — Sandoval Quaresma <span>22 de março de 1998, aos 88 anos</span></li>
+      <li><b>Rony Cócegas</b> — Galeão Cumbica <span>25 de julho de 1999, aos 59 anos</span></li>
+      <li><b>Zezé Macedo</b> — Dona Bela <span>8 de outubro de 1999, aos 83 anos</span></li>
+      <li><b>Milton Carneiro</b> — Inspetor Atanagildo <span>8 de dezembro de 1999, aos 76 anos</span></li>
+      <li><b>Colé Santana</b> — Waldemar Motta <span>29 de agosto de 2000, aos 80 anos</span></li>
+      <li><b>Nélia Paula</b> — Amparito Pêra <span>8 de setembro de 2002</span></li>
+      <li><b>Rogério Cardoso</b> — Rolando Lero <span>24 de julho de 2003, aos 66 anos</span></li>
+      <li><b>Antônio Carlos Pires</b> — Joselino Barbacena <span>28 de fevereiro de 2005, aos 78 anos</span></li>
+      <li><b>Francisco Milani</b> — Pedro Pedreira <span>13 de agosto de 2005, aos 68 anos</span></li>
+      <li><b>Carequinha</b> — ele mesmo <span>2006, aos 91 anos</span></li>
+      <li><b>David Cunha</b> — Manguaça <span>24 de novembro de 2006, aos 49 anos</span></li>
+      <li><b>Luiz Carlos Tourinho</b> — Pedro Vaz Calminho <span>21 de janeiro de 2008, aos 43 anos</span></li>
+      <li><b>Dicró</b> — ele mesmo <span>25 de abril de 2009, aos 66 anos</span></li>
+      <li><b>Mário Tupinambá</b> — Bertoldo Brecha <span>27 de setembro de 2010, aos 78 anos</span></li>
+      <li><b>Lupe Gigliotti</b> — Dona Escolástica <span>19 de dezembro de 2010, aos 84 anos</span></li>
+      <li><b>Marcos Plonka</b> — Samuel Blaustein <span>8 de setembro de 2011, aos 71 anos</span></li>
+      <li><b>Chico Anysio</b> — Professor Raimundo <span>23 de março de 2012, aos 80 anos</span></li>
+      <li><b>Cláudio Cunha</b> — Gaúcho <span>20 de abril de 2015, aos 68 anos</span></li>
+      <li><b>Jorge Loredo</b> — Zé Bonitinho <span>26 de março de 2015, aos 89 anos</span></li>
+      <li><b>Orival Pessini</b> — Patropi e Sócrates <span>14 de outubro de 2016, aos 72 anos</span></li>
+      <li><b>Jaime Filho</b> — Suppapau Uaçu <span>3 de janeiro de 2017, aos 86 anos</span></li>
+      <li><b>João Elias</b> — Salim Muchiba <span>março de 2017, aos 72 anos</span></li>
+      <li><b>Paulo Silvino</b> — Seu Tabajara <span>17 de agosto de 2017, aos 78 anos</span></li>
+      <li><b>Agildo Ribeiro</b> — Amâncio Andorinha <span>28 de abril de 2018, aos 86 anos</span></li>
+      <li><b>Lúcio Mauro</b> — Aldemar Vigário <span>11 de maio de 2019, aos 92 anos</span></li>
+      <li><b>Zilda Cardoso</b> — Dona Catifunda <span>20 de dezembro de 2019, aos 83 anos</span></li>
+      <li><b>Orlando Drummond</b> — Seu Peru <span>27 de julho de 2021, aos 101 anos</span></li>
+      <li><b>Marina Miranda</b> — Dona Charanga <span>21 de setembro de 2021, aos 90 anos</span></li>
+      <li><b>Nádia Carvalho</b> — Santinha Pureza <span>11 de julho de 2022, aos 67 anos</span></li>
+      <li><b>Cláudia Jimenez</b> — Dona Cacilda <span>20 de agosto de 2022, aos 63 anos</span></li>
+      <li><b>Antônio Pedro</b> — Seu Bicalho <span>12 de março de 2023, aos 82 anos</span></li>
+      <li><b>Luís Delfino</b> — o diretor da Escolinha <span>25 de maio de 2025, aos 83 anos</span></li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer id="fontes">
+  <div class="wrap col">
+    <p class="kicker">Notas</p>
+    <h2>Sobre esta caderneta</h2>
+    <p>O levantamento cruza a Wikipédia lusófona (verbetes do programa, da versão de 2015 e a lista de personagens), fichas técnicas do Filmow e do AdoroCinema por temporada, IMDb, TMDB, o Museu Brasileiro de Rádio e Televisão, obituários da imprensa brasileira (Terra, IstoÉ, Agência Brasil, Estado de Minas, Gazeta do Povo, O Tempo) e dois arquivos de fãs particularmente completos: o <i>Tributo ao Raimundo</i> e o EPR Fan Site.</p>
+    <p><strong>Onde as fontes divergem.</strong> A data de estreia do programa solo aparece como 4 de agosto de 1990 na maioria das fontes, mas há registros conflitantes. A entrada de João Canabrava é datada de outubro de 1991 em listas de personagens, enquanto a biografia de Tom Cavalcante marca sua estreia na Globo em 12 de outubro de 1992. As datas de exibição da Nova Geração variam conforme a fonte considere a estreia no Canal Viva ou a reprise na Globo. Alguns alunos de passagem rápida pela sala — sobretudo nas turmas de 1994, 1995 e 2001 — não têm intérprete documentado em nenhuma fonte pública consultada, e por isso não aparecem aqui.</p>
+    <p><strong>O que ficou de fora.</strong> A <i>Escolinha do Barulho</i> (Record, 1999–2001) e a <i>Escolinha do Gugu</i> (SBT) não são a Escolinha do Professor Raimundo: são programas concorrentes que reaproveitaram o formato e parte do elenco. Estão citados no texto, mas seus personagens próprios não entram na chamada.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var q = document.getElementById('q');
+  var count = document.getElementById('count');
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.card'));
+  var rolls = Array.prototype.slice.call(document.querySelectorAll('.roll'));
+  var total = cards.length;
+
+  function norm(s){
+    return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+  }
+  cards.forEach(function(c){ c.dataset.hay = norm(c.textContent); });
+
+  function reset(){
+    cards.forEach(function(c){ c.classList.remove('hidden'); });
+    rolls.forEach(function(r){
+      var b = r.previousElementSibling;
+      if(b && b.classList.contains('turma')) b.hidden = false;
+      r.hidden = false;
+    });
+    count.textContent = total + ' fichas';
+  }
+
+  function run(){
+    var term = norm(q.value.trim());
+    if(!term){ reset(); return; }
+    var shown = 0;
+    cards.forEach(function(c){
+      var hit = c.dataset.hay.indexOf(term) !== -1;
+      c.classList.toggle('hidden', !hit);
+      if(hit) shown++;
+    });
+    rolls.forEach(function(r){
+      var any = r.querySelector('.card:not(.hidden)');
+      r.hidden = !any;
+      var band = r.previousElementSibling;
+      if(band && band.classList.contains('turma')) band.hidden = !any;
+    });
+    count.textContent = shown === 0
+      ? 'nenhuma ficha encontrada'
+      : shown + (shown === 1 ? ' ficha' : ' fichas');
+  }
+
+  q.addEventListener('input', run);
+  reset();
+})();
+</script>
