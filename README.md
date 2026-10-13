@@ -1,24 +1,16 @@
-# Caderneta da Escolinha
+# bmarinho
 
-Guia completo dos personagens e dos atores da **Escolinha do Professor Raimundo**,
-das duas versões: a de Chico Anysio (rádio, 1952 → TV Globo, 1990–1995 e 2001) e a
-Nova Geração de Bruno Mazzeo (Canal Viva, 2015–2021).
+Repositório de trabalho criativo do Bruno. Hoje o conteúdo principal são as **30 ideias de produção** para um criador sozinho, com prazo até 29/04/2027: 12 que reforçam o Lobo Solar (@olobosolar) e 18 fora dele.
 
 | Arquivo | O que é |
 | --- | --- |
-| [`escolinha/caderneta-da-escolinha.md`](escolinha/caderneta-da-escolinha.md) | O texto completo, em Markdown |
-| [`escolinha/caderneta-da-escolinha.html`](escolinha/caderneta-da-escolinha.html) | A página publicada (fonte) |
+| [`ideias/30-ideias.md`](ideias/30-ideias.md) | As 30 ideias: mecanismo, o que já existe, primeira peça, custo, risco, notas e ranking |
+| [`ideias/candidatas.md`](ideias/candidatas.md) | As 70 candidatas, os critérios de corte e o motivo de cada descarte |
+| [`ideias/fontes.md`](ideias/fontes.md) | Todas as fontes, agrupadas por ideia, com a ressalva de como foram consultadas |
+| [`ideias/30-ideias.html`](ideias/30-ideias.html) | A mesma proposta em página para ler no celular, publicada em <https://claude.ai/artifact/EbeKYbuP8pZbrVt1fpZPd9> |
 
-Página publicada: <https://claude.ai/code/artifact/938e0555-cb35-4c7a-88ac-b01947ef1be5>
+A pesquisa foi feita em 13/10/2026. O que não pôde ser confirmado está marcado como hipótese no próprio texto.
 
-## Conteúdo
+## Arquivo anterior
 
-- A história do programa, de 1952 a 2021
-- Como a aula funcionava (formato, improviso, bordões)
-- O Professor Raimundo Nonato Canavieira — o personagem, Chico Anysio e Bruno Mazzeo
-- **111 fichas**: turma de 1990, reforços de 1990–91, turmas de 1992 a 1995, turma de 2001
-  e todo o elenco da Nova Geração — personagem, bordão e biografia real do intérprete
-- Tabela comparativa "quem fez quem" nas duas versões
-- Temporadas da Nova Geração
-- In memoriam
-- Fontes consultadas e pontos em que elas divergem
+A **Caderneta da Escolinha**, guia dos personagens e atores da *Escolinha do Professor Raimundo*, continua em [`escolinha/`](escolinha/) e na [página publicada](https://claude.ai/code/artifact/938e0555-cb35-4c7a-88ac-b01947ef1be5).
