@@ -5,7 +5,7 @@ Repositório de trabalho criativo do Bruno. Hoje o conteúdo principal são as *
 | Arquivo | O que é |
 | --- | --- |
 | [`ideias/30-ideias.md`](ideias/30-ideias.md) | As 30 ideias: mecanismo, o que já existe, primeira peça, custo, risco, notas e ranking |
-| [`ideias/candidatas.md`](ideias/candidatas.md) | As 70 candidatas, os critérios de corte e o motivo de cada descarte |
+| [`ideias/candidatas.md`](ideias/candidatas.md) | As 102 candidatas das duas rodadas, os critérios de corte e o motivo de cada descarte |
 | [`ideias/fontes.md`](ideias/fontes.md) | Todas as fontes, agrupadas por ideia, com a ressalva de como foram consultadas |
 | [`ideias/30-ideias.html`](ideias/30-ideias.html) | A mesma proposta em página para ler no celular, publicada em <https://claude.ai/artifact/EbeKYbuP8pZbrVt1fpZPd9> |
 

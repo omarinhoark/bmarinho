@@ -1,96 +1,109 @@
-# As 70 candidatas e a triagem
+# As candidatas e a triagem
 
-Gerei 70 candidatas antes de escolher. Ficaram 30. Das 40 que caíram, 6 foram fundidas numa das escolhidas e 34 foram descartadas. Os critérios de corte, nesta ordem:
+Foram duas rodadas. A primeira gerou 70 candidatas e escolheu 30. Essa versão foi recusada porque:
 
-1. **Já existe sem diferença que importe.** A pesquisa achou algo parecido e a versão dele não faria nada novo.
-2. **Reembala o que ele já tem.** Repete uma série, um formato ou um produto do Lobo Solar, ou o Antitédio, com outra roupa.
-3. **Depende de um público que ele ainda não tem**, e não é ela mesma o jeito de conseguir esse público.
-4. **Não cabe em 10 a 15 horas por semana**, ou pede dinheiro adiantado relevante.
-5. **Fere um limite**: rosto, voz, nome, política, saúde clínica, emprego, ou coisa presencial fora de Brasília.
-6. **É genérica.** Poderia ser de qualquer pessoa.
+- as ideias do Lobo eram quase todas séries de carrossel;
+- os três eixos foram ignorados;
+- faltou ousadia.
 
-Quando duas candidatas usavam o mesmo mecanismo, fiquei com a mais forte e fundi ou descartei a outra.
+A segunda rodada gerou 32 candidatas novas e refez a escolha sobre o conjunto. Ao todo foram 102 candidatas, com 30 escolhidas.
+
+## Critérios de corte
+
+Valem para as duas rodadas, nesta ordem:
+
+1. **É série de carrossel**, ou parente de uma série que o Lobo já tem. Este critério só entrou na segunda rodada.
+2. **Já existe sem diferença que importe.**
+3. **Reembala o que ele já tem.**
+4. **Depende de um público que ele ainda não tem**, e não é ela mesma o jeito de conseguir esse público.
+5. **Não cabe em 10 a 15 horas por semana**, ou pede dinheiro adiantado relevante.
+6. **Fere um limite**: rosto, voz, nome, política, saúde clínica, emprego, ou coisa presencial fora de Brasília.
+7. **É segura demais**: um site, uma página ou um mapa sem mecanismo que dê vontade de mostrar. Este critério também só entrou na segunda rodada.
+
+Além disso, a segunda rodada exigiu que os três eixos aparecessem com peso.
 
 ## Ficaram (30)
 
-| Nº final | Candidata | Observação da triagem |
-| --- | --- | --- |
-| 1 | Vale-Errata | absorveu a candidata "Livro de Ocorrências" |
-| 2 | Palpite Lacrado | |
-| 3 | Rodapé | |
-| 4 | Prazo de Validade | absorveu "Almanaque das Certezas Vencidas" |
-| 5 | Classificados de Ontem | ficou com viabilidade 2: o acervo dos anos 1960 não foi confirmado |
-| 6 | Contagem | |
-| 7 | Placar das Águas | absorveu "Placar de mesa em LED" e "pluviômetro caseiro" |
-| 8 | Notas de Atualização | |
-| 9 | Créditos Finais | |
-| 10 | Encontro Marcado | |
-| 11 | Ponto Exato | substituiu "Placas com QR em Brasília", barrada pela Lei 3.035/2002 |
-| 12 | Frase Sem Dono | entrou no Lobo no lugar de "Alucinou" |
-| 13 | Aires Diário | |
-| 14 | Sinal Fraco | absorveu "ARG em Brasília" |
-| 15 | Conto de Cupom | |
-| 16 | Clube do Volume 1 | |
-| 17 | Candanga | |
-| 18 | Tesourinha | ganhou de "Superquadra" por caber no tempo |
-| 19 | Museu do Que Não Houve | absorveu "Enciclopédia de um lugar que não existe" |
-| 20 | Súmula | |
-| 21 | Prancheta | |
-| 22 | Dicionário de Barulhos | |
-| 23 | Ouvido Candango | |
-| 24 | Seca e Chuva | absorveu "Ipê, jogo ocioso" |
-| 25 | Pictomangá | |
-| 26 | Rasura | |
-| 27 | No Prelo | entrou no lugar de "Falta Um" |
-| 28 | Protocolo | |
-| 29 | Cemitério da Jump | |
-| 30 | Os Prédios Falam | não pesquisei a fundo se existe algo parecido; está marcado na ideia |
+| Nº | Ideia | Eixo | Origem |
+| --- | --- | --- | --- |
+| 1 | Vale-Errata | autoria | primeira rodada |
+| 2 | Palpite Lacrado | autoria | primeira rodada |
+| 3 | Erosão | autoria | nova |
+| 4 | Ponto Exato | autoria | primeira rodada |
+| 5 | Frase Sem Dono | autoria | primeira rodada |
+| 6 | Coro de Cem | convivência | nova |
+| 7 | Brasília, 21 de Abril | convivência | nova |
+| 8 | Rede dos 27 | convivência | nova; absorveu "Correio do Lobo" |
+| 9 | Varal do Eixão | convivência | nova |
+| 10 | Placar ao Vivo | convivência | nova |
+| 11 | O Lobo Apura | liberdade | nova; absorveu "Selo Conferido" |
+| 12 | Selo de Errata | liberdade | nova |
+| 13 | Lâmina de Laboratório | liberdade | nova |
+| 14 | Tralha Brasileira | liberdade | nova |
+| 15 | Jogo de Presente | liberdade | nova |
+| 16 | Abre a Gaveta | liberdade | nova |
+| 17 | Placar de Bolso | liberdade | nova |
+| 18 | Passaporte das 35 | convivência | nova; absorveu "Corrida-Censo" |
+| 19 | Clube do Volume 1 | convivência | primeira rodada |
+| 20 | Quiz do Placar | convivência | nova |
+| 21 | Álbum da Pelada | convivência | nova; absorveu a "Súmula" da primeira rodada |
+| 22 | Sala de Estar | convivência | nova |
+| 23 | Conto de Cupom | convivência | primeira rodada |
+| 24 | Seca e Chuva | convivência | primeira rodada |
+| 25 | Aires Diário | autoria | primeira rodada |
+| 26 | Sinal Fraco | autoria | primeira rodada |
+| 27 | Museu do Que Não Houve | autoria | primeira rodada |
+| 28 | Protocolo | autoria | primeira rodada |
+| 29 | No Prelo | autoria | primeira rodada |
+| 30 | Pictomangá | autoria | primeira rodada, agora com o destino Shueisha |
 
-## Caíram (40)
+## Saíram na segunda rodada (17 da primeira versão)
+
+| Ideia | Por que saiu |
+| --- | --- |
+| Rodapé | Só torna visível a regra da fonte primária que já existe; é segura demais. |
+| Prazo de Validade | É série de carrossel, parente da Errata. |
+| Classificados de Ontem | É série de carrossel, parente do Eixo e do Reparei, e o acervo dos anos 1960 não foi confirmado. |
+| Contagem | É série de carrossel, parente da Sintonia. Boa, e pode entrar no calendário dos 150. |
+| Notas de Atualização | É série de carrossel. Boa, e pode entrar no calendário dos 150. |
+| Créditos Finais | É série de vídeo, parente do Bastidor. |
+| Placar das Águas | É um ritual com dado de terceiros num formato que já existe; perdeu para o Placar ao Vivo e a Erosão, que dão ao placar e à rasura um mecanismo novo. |
+| Encontro Marcado | Parceria entre perfis é comum, e o resultado ainda é um carrossel. |
+| Súmula | Fundida no Álbum da Pelada, que dá à súmula um objeto final. |
+| Candanga | Bonita, mas o eixo de autoria tinha ideias de mecanismo mais forte, e são três meses de trabalho. |
+| Tesourinha | Boa, mas perdeu espaço para ideias de liberdade material e convivência, que estavam faltando. |
+| Prancheta | É série de carrossel numa página nova. |
+| Dicionário de Barulhos | Site de referência, seguro demais. |
+| Ouvido Candango | Um mapa, seguro demais. |
+| Rasura | Ferramenta útil só a ele, sem mecanismo que dê vontade de mostrar. |
+| Cemitério da Jump | Site de dados, seguro demais. |
+| Os Prédios Falam | Série de tirinha numa página nova, com pouca pesquisa de concorrência. |
+
+## Novas candidatas descartadas na segunda rodada
 
 | Candidata | O que era | Por que caiu |
 | --- | --- | --- |
-| Livro de Ocorrências | registro público dos erros do Lobo | fundida no Vale-Errata |
-| Almanaque das Certezas Vencidas | almanaque físico de fatos vencidos | fundida no Prazo de Validade; sozinha reembalava os carrosséis |
-| Placar de mesa em LED | objeto físico com dados de Brasília | virou peça opcional do Placar das Águas |
-| Enciclopédia de um lugar que não existe | wiki de um universo autoral | fundida no Museu do Que Não Houve |
-| ARG em Brasília | caça urbana com pistas on-line | fundida no Sinal Fraco; sozinha dependia de público (precedente: Zona Incerta, 2007) |
-| Ipê, jogo ocioso | jogo de um ipê ao longo do ano | fundida no Seca e Chuva |
-| Achômetro | chute dos seguidores contra o número real | perto demais dos stories de palpite que já existem e da pesquisa Perigos da Percepção, da Ipsos |
-| Mural do 150 | grade do perfil formando uma imagem só | quebra-cabeça de grade é comum e frágil a mudanças de recorte do perfil |
-| Álbum do Lobo | figurinhas digitais com códigos escondidos nos posts | a mecânica já existe em campanhas de marca (BMW Itália, Thums Up) e precisa de multidão para parecer viva |
-| Alucinou | Errata dos erros de chatbots | perto demais da Errata; Lupa e TecMundo já fazem testes avulsos; envelhece rápido |
-| A Brasília que não foi | os projetos derrotados de 1957 visualizados | já existem a exposição "Outra Brasília Nunca Mais" (2021) e o "Invisible Brasilias", do MAB |
-| Teste de Brasiliense | quiz com diploma | gênero de quiz genérico |
-| Permuta 27 | troca de cartões entre seguidores das 27 UFs | depende de público que não existe |
-| Chaveamento de fatos | torneio de curiosidades votado nos stories | genérico |
-| Pede Fonte | leitores mandam afirmações para checar | já feito pelas agências de checagem; vira caixa de entrada sem fim |
-| Descrição autoral | texto alternativo das imagens escrito como literatura | bonito, mas não dá vontade de mostrar para ninguém |
-| Rodapé na Wikipédia | levar a apuração para a Wikipédia | regra contra pesquisa inédita e conflito de interesse |
-| Placas com QR em Brasília | fatos colados nos lugares | publicidade em área pública exige autorização (Lei 3.035/2002) |
-| Bastidor do Lobo | vídeo da escrita do carrossel | vídeo de processo é comum; a parte boa foi para o Rasura |
-| Rolagem do Eixo | o Eixo Monumental em escala 1:1 na rolagem | existe o "If the Moon Were Only 1 Pixel", de Josh Worth (conhecimento prévio, não pesquisado nesta rodada), e o Mapa do Eixo já cobre o tema |
-| Linha | documentário de uma linha de ônibus | sobrepõe o Eixo |
-| Guia de Brasília para quem não vem | livro-guia | sobrepõe o Eixo e o Mapa do Eixo |
-| Superquadra | construtor de cidade com as regras do tombamento | escopo grande demais para o tempo; o Tesourinha faz o truque menor |
-| Só Lá | ficção geolocalizada em Brasília | a mesma técnica do Ponto Exato; Echoes e VoiceMap já fazem ficção assim |
-| Página Um | ensaio sobre a primeira página de mangás | a newsletter Thrice Horror faz algo vizinho, e sobrepõe o Bastidor |
-| Falta Um | mapa de campos públicos do DF com mural de vagas | o Appito já permite tornar o jogo público para completar vagas; não existe mapa oficial, mas o mapa sozinho não é ousado |
-| Liga de fantasia de anime | escalar animes da temporada e pontuar | a Fantasy Anime League, do MyAnimeList, existe desde 2008 |
-| Física dos golpes de anime | calcular a física das cenas | gênero saturado (VS Battles e similares; não pesquisei a fundo) |
-| App de treino estilo Solo Leveling | treino como subida de nível | mercado aparentemente saturado (hipótese, não pesquisei a fundo) |
-| Desenho do avião no Strava | correr o contorno do Plano Piloto | já há rotas "Avião" no Wikiloc, de 44 a 46 km |
-| Linha do tempo brasileira em cartas | jogo de ordenar eventos | o Timeline, da Asmodee, existe (conhecimento prévio, não pesquisado); e já há o Antitédio como baralho |
-| Livro-jogo em Twine | aventura de escolhas | gênero cheio, sem mecanismo próprio |
-| Webcomic de pelada com imagens de IA | quadrinho semanal | cara de IA |
-| Fuga por correio | escape room em envelopes | custo adiantado e de envio por exemplar |
-| Cadáver esquisito entre pseudônimos | quadrinho em revezamento | formato antigo e muito praticado, e depende de rede |
-| Gerador de carrossel | ferramenta que corta texto em lâminas | Canva e muitas outras já fazem (conhecimento prévio) |
-| Jogo de domingo | um jogo pequeno por semana em público | o desafio "One Game a Month" já existe (conhecimento prévio, não pesquisado), e a diferença seria pouca |
-| Contos de Miyazawa Kenji em português | tradução de domínio público | sem japonês fluente, seria tradução de tradução com IA |
-| Medidor de chute | velocidade do chute pela câmera do celular | apps de radar já existem (hipótese, não pesquisei a fundo) |
-| Fichário de leituras | catálogo público do que ele lê | Goodreads e Skoob |
+| Correio do Lobo | assinatura mensal de carta | fundida na Rede dos 27 |
+| Selo Conferido | selo do Lobo para posts de outros criadores | fundido no O Lobo Apura |
+| Corrida-Censo | grupo de corrida que conta coisas pelo caminho | fundido no Passaporte das 35 |
+| Erro Plantado | um erro proposital por mês para os leitores caçarem | corrói a confiança que sustenta o Lobo |
+| Giz no Eixão | fatos escritos a giz no asfalto | não confirmei se giz em via pública conta como pichação; o Varal faz o mesmo sem o risco |
+| Livro do Clube | história de um time de várzea sob encomenda | falta um clube com quem ele tenha laço; precedentes como *Tira Gosto F.C.* |
+| Jogo Americano do Eixo | carrossel impresso em jogo americano de café | jogo americano de curiosidade é comum em restaurante |
+| Fora de Ordem | carrossel postado embaralhado para o leitor ordenar | jogo fraco, que cansa na segunda vez |
+| Lobo na Sala | carrosséis impressos para professores | material didático de curiosidades é comum |
+| Caixa dos 150 | os 150 carrosséis numa caixa de cartas | reembala o que existe |
+| Cineclube do Bastidor | sessão de cinema em casa com dossiê | cineclube é comum; o dossiê sozinho não basta |
+| Ateliê de Camisa | design de uniformes para times amadores | designer de camisa é mercado cheio no Instagram |
+| Pergunta Encomendada | leitor paga para o Lobo apurar uma pergunta | perto do O Lobo Apura, com público menor |
+| Lâmina 151 | concurso para os seguidores fazerem um carrossel | concurso de seguidores é comum e depende de público |
+| Calendário Jogável | um nível de jogo liberado por dia | parece calendário do advento, e é muito trabalho diário |
 
-As seis primeiras linhas são fusões: a ideia não se perdeu, entrou numa das 30. As outras 34 são descartes de fato.
+## A triagem da primeira rodada
 
-As fontes dos descartes que citam algo concreto estão em [`fontes.md`](fontes.md).
+As 40 candidatas que caíram na primeira rodada continuam valendo como descartes, com os mesmos motivos:
+
+- **Fusões:** Livro de Ocorrências, Almanaque das Certezas Vencidas, Placar de mesa em LED, Enciclopédia de um lugar que não existe, ARG em Brasília, Ipê jogo ocioso.
+- **Descartes:** Achômetro, Mural do 150, Álbum do Lobo, Alucinou, A Brasília que não foi, Teste de Brasiliense, Permuta 27, Chaveamento de fatos, Pede Fonte, Descrição autoral, Rodapé na Wikipédia, Placas com QR em Brasília, Bastidor do Lobo, Rolagem do Eixo, Linha, Guia de Brasília para quem não vem, Superquadra, Só Lá, Página Um, Falta Um, Liga de fantasia de anime, Física dos golpes de anime, App de treino estilo Solo Leveling, Desenho do avião no Strava, Linha do tempo brasileira em cartas, Livro-jogo em Twine, Webcomic de pelada com IA, Fuga por correio, Cadáver esquisito entre pseudônimos, Gerador de carrossel, Jogo de domingo, Contos de Miyazawa Kenji, Medidor de chute, Fichário de leituras.
+
+O motivo de cada uma está no histórico do repositório, no commit `9c86b86`. As fontes estão em [`fontes.md`](fontes.md).
