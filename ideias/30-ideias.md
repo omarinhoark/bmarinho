@@ -29,7 +29,7 @@ Proposta para Bruno, com prazo até 29/04/2027. São 12 ideias que reforçam o L
 
 A página de curiosidades que paga para ser pega no erro inverte a lógica do gênero, e é isso que faz alguém mostrar para outra pessoa.
 
-**O que já existe.** O modelo vem de Donald Knuth. Desde os anos 1970 ele manda cheques de 0x$1,00, um "dólar hexadecimal" que vale US$ 2,56, a quem acha erro nos livros dele. Desde outubro de 2008, por segurança bancária, os cheques são certificados de um banco fictício, o Bank of San Serriffe ([Knuth, news08](https://www-cs-faculty.stanford.edu/~knuth/news08.html); [divisbyzero, 01/11/2008](https://divisbyzero.com/2008/11/01/knuth-stops-writing-checks/)). A data em que os cheques começaram não foi confirmada. Registros públicos de correção existem em newsletters como a [Faked Up](https://fakedup.substack.com/p/corrections-policy), mas não encontrei nenhum perfil de curiosidades com um livro de erros. A diferença está na escala e no objeto: o vale é desenhado com os formatos do próprio Lobo, e o que se premia é o feed, não um livro técnico.
+**O que já existe.** O modelo vem de Donald Knuth, que manda cheques de 0x$1,00, um "dólar hexadecimal" que vale US$ 2,56, a quem acha erro nos livros dele. Desde outubro de 2008, por segurança bancária, os cheques são certificados de um banco fictício, o Bank of San Serriffe ([Knuth, news08](https://www-cs-faculty.stanford.edu/~knuth/news08.html); [divisbyzero, 01/11/2008](https://divisbyzero.com/2008/11/01/knuth-stops-writing-checks/)). A data em que os cheques começaram não foi confirmada. Registros públicos de correção existem em newsletters como a [Faked Up](https://fakedup.substack.com/p/corrections-policy), mas não encontrei nenhum perfil de curiosidades com um livro de erros. A diferença está na escala e no objeto: o vale é desenhado com os formatos do próprio Lobo, e o que se premia é o feed, não um livro técnico.
 
 **Por que só ele faria.** Quem confere tudo em fonte primária pode se dar ao luxo de convidar a fiscalização. A rasura já é um formato visual dele, e o certificado é a rasura em papel.
 
@@ -326,7 +326,7 @@ Notas: ousadia 4 · encaixe 5 · viabilidade 4 · circulação 5
 **Mecanismo.**
 - O diário do Conselheiro Aires começa em "1888, 9 de janeiro" ([texto da obra completa, MEC](https://machado.mec.gov.br/obra-completa-lista/item/download/10_3b418d3289f560235fccf338378de5bf)) e vai até 1889.
 - Cada entrada chega na caixa do leitor no mesmo dia e mês, 139 anos depois.
-- O narrador atravessa a abolição e o fim do Império, então os dias de 1888 que importam chegam no calendário de 2027.
+- O diário cobre o ano da abolição (1888) e termina em 1889, antes da Proclamação da República, segundo o estudo citado abaixo. As datas de 1888 chegam no calendário de 2027.
 - Cada envio leva um rodapé curto e conferido sobre o que acontecia no Rio naquele dia.
 
 O texto é de domínio público.
